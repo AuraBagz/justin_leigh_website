@@ -75,7 +75,6 @@ export default function Navbar() {
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 h-[72px] flex items-center justify-between">
         <div className="flex items-center gap-3">
-          <ThemeToggle />
           <Link to="/" className="flex items-center gap-3 group">
             <div className="w-8 h-8 border border-gold/60 flex items-center justify-center text-gold font-serif font-bold text-sm group-hover:bg-gold/10 transition-colors">
               JL
@@ -118,7 +117,7 @@ export default function Navbar() {
               location.pathname === "/ai" ? "bg-gold/10" : ""
             }`}
           >
-            Integrate A.I.
+            Integrate A.I. Into Your Practice
           </Link>
           <a
             href="tel:5094264416"
@@ -132,6 +131,7 @@ export default function Navbar() {
           >
             Free Consultation
           </Link>
+          <ThemeToggle />
         </div>
 
         <button
