@@ -57,7 +57,7 @@ export default function Navbar() {
         <div className="hidden lg:flex items-center gap-3">
           <a
             href="tel:5094264416"
-            className="text-[13px] text-white/40 hover:text-white/70 transition-colors px-3 py-2"
+            className="text-[13px] text-gold hover:text-gold-light transition-colors px-3 py-2"
           >
             (509) 426-4416
           </a>
