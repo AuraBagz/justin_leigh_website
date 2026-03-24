@@ -50,19 +50,19 @@ export default function About() {
             </h2>
 
             <div className="space-y-5 mb-10">
-              <p className="text-white/40 text-[15px] leading-relaxed">
+              <p className="text-white/80 text-[15px] leading-relaxed">
                 Justin D. Leigh is a committed attorney based in Goldendale,
                 Washington, licensed in both Washington and Oregon. As a solo
                 practitioner, he provides the personalized, one-on-one attention
                 that larger firms simply cannot match.
               </p>
-              <p className="text-white/40 text-[15px] leading-relaxed">
+              <p className="text-white/80 text-[15px] leading-relaxed">
                 With a diverse practice spanning real estate, business law,
                 estate planning, personal injury, and criminal defense, Justin
                 brings unique depth to every case. When you hire Justin, you work
                 directly with Justin - not a paralegal, not an associate.
               </p>
-              <p className="text-white/40 text-[15px] leading-relaxed">
+              <p className="text-white/80 text-[15px] leading-relaxed">
                 Beyond the courtroom, Justin brings real-world business insight
                 as a brewery owner, giving him a practical edge in alcohol
                 beverage law and business strategy.
