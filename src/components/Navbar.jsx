@@ -113,10 +113,11 @@ export default function Navbar() {
         <div className="hidden lg:flex items-center gap-3">
           <Link
             to="/ai"
-            className={`px-4 py-2 text-[12px] font-semibold tracking-wide border border-gold/60 text-gold hover:bg-gold hover:text-black transition-all duration-300 ${
-              location.pathname === "/ai" ? "bg-gold text-black" : ""
-            }`}
+            className="relative px-4 py-2 text-[12px] font-semibold tracking-wide border border-gold/60 text-gold hover:bg-gold hover:text-navy transition-all duration-300"
           >
+            {location.pathname === "/ai" && (
+              <span className="absolute inset-x-2 -bottom-0.5 h-px bg-gradient-to-r from-transparent via-gold to-transparent" />
+            )}
             Integrate A.I. Into Your Practice
           </Link>
           <a
