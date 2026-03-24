@@ -125,13 +125,13 @@ export default function ContactPage() {
               Consultation
             </span>
           </h1>
-          <p className="text-white/40 text-base sm:text-lg max-w-2xl mx-auto leading-relaxed">
+          <p className="text-white text-base sm:text-lg max-w-2xl mx-auto leading-relaxed">
             I prioritize accessibility and responsiveness, meeting clients at
             locations that best suit their needs. I offer complimentary initial
             consultations to discuss your legal matters and develop a plan
             tailored to your goals.
           </p>
-          <p className="text-white/30 text-sm mt-3">
+          <p className="text-white/70 text-sm mt-3">
             I typically respond within two business days. If your matter is
             urgent, please indicate that in the subject line.
           </p>
