@@ -116,10 +116,10 @@ export default function Navbar() {
         </div>
 
         {/* Desktop Right Side - only show on xl screens */}
-        <div className="hidden xl:flex items-center gap-2">
+        <div className="hidden xl:flex items-center gap-4">
           <Link
             to="/ai"
-            className="relative px-3 py-2 text-[11px] font-semibold tracking-wide border border-gold/60 text-gold hover:bg-gold hover:text-navy transition-all duration-300 whitespace-nowrap"
+            className="relative px-4 py-2 text-[12px] font-semibold tracking-wide border border-gold/60 text-gold hover:bg-gold hover:text-navy transition-all duration-300 whitespace-nowrap"
           >
             {location.pathname === "/ai" && (
               <span className="absolute inset-x-2 -bottom-0.5 h-px bg-gradient-to-r from-transparent via-gold to-transparent" />
@@ -128,17 +128,19 @@ export default function Navbar() {
           </Link>
           <a
             href="tel:5094264416"
-            className="text-[12px] text-gold hover:text-gold-light transition-colors px-2 py-2 whitespace-nowrap"
+            className="text-[13px] text-gold hover:text-gold-light transition-colors px-2 py-2 whitespace-nowrap"
           >
             (509) 426-4416
           </a>
           <Link
             to="/contact"
-            className="relative px-4 py-2 text-[12px] font-semibold text-navy bg-gold hover:bg-gold-light transition-all duration-300 tracking-wide whitespace-nowrap"
+            className="relative px-5 py-2.5 text-[12px] font-semibold text-navy bg-gold hover:bg-gold-light transition-all duration-300 tracking-wide whitespace-nowrap"
           >
             Free Consultation
           </Link>
-          <ThemeToggle />
+          <div className="ml-2">
+            <ThemeToggle />
+          </div>
         </div>
 
         {/* Mobile: Theme toggle + Hamburger */}
