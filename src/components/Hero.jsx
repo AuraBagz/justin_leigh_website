@@ -84,7 +84,7 @@ export default function Hero() {
           </a>
           <a
             href="tel:5094264416"
-            className="glass-strong px-8 py-4 text-white/70 text-sm font-medium tracking-wide hover:text-white hover:bg-white/10 transition-all duration-300"
+            className="px-8 py-4 bg-gold text-navy text-sm font-bold tracking-wide hover:bg-gold-light transition-colors duration-300"
           >
             Call (509) 426-4416
           </a>
