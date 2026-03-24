@@ -62,12 +62,12 @@ export default function Hero() {
 
         {/* Subtitle */}
         <p
-          className="text-white text-sm sm:text-base md:text-lg leading-relaxed max-w-2xl mb-8 sm:mb-10 px-2 animate-fade-up"
+          className="text-white/80 text-sm sm:text-base md:text-lg leading-relaxed max-w-2xl mb-8 sm:mb-10 px-2 animate-fade-up"
           style={{ animationDelay: "0.8s" }}
         >
           Personalized legal representation across Washington and Oregon.
           <br className="hidden sm:block" />
-          <span className="text-gold">Tailored strategy</span>, <span className="text-gold">compassionate counsel</span>, and <span className="text-gold">diligent advocacy</span> for
+          <span className="text-gradient-gold font-semibold">Tailored strategy</span>, <span className="text-gradient-gold font-semibold">compassionate counsel</span>, and <span className="text-gradient-gold font-semibold">diligent advocacy</span> for
           every client.
         </p>
 
