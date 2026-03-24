@@ -134,7 +134,7 @@ export default function Navbar() {
           </a>
           <Link
             to="/contact"
-            className="relative px-4 py-2 text-[12px] font-semibold text-navy bg-gradient-to-b from-white to-white/80 hover:from-gold-light hover:to-gold transition-all duration-300 tracking-wide whitespace-nowrap"
+            className="relative px-4 py-2 text-[12px] font-semibold text-navy bg-gold hover:bg-gold-light transition-all duration-300 tracking-wide whitespace-nowrap"
           >
             Free Consultation
           </Link>
@@ -146,12 +146,12 @@ export default function Navbar() {
           <ThemeToggle />
           <button
             onClick={() => setMobileOpen(!mobileOpen)}
-            className="flex flex-col gap-1.5 p-2"
+            className="w-10 h-10 flex items-center justify-center relative"
             aria-label="Menu"
           >
-            <span className={`w-5 h-px bg-white transition-transform duration-300 ${mobileOpen ? "rotate-45 translate-y-[3.5px]" : ""}`} />
-            <span className={`w-5 h-px bg-white transition-opacity duration-300 ${mobileOpen ? "opacity-0" : ""}`} />
-            <span className={`w-5 h-px bg-white transition-transform duration-300 ${mobileOpen ? "-rotate-45 -translate-y-[3.5px]" : ""}`} />
+            <span className={`absolute w-5 h-[1.5px] bg-white transition-all duration-300 ${mobileOpen ? "rotate-45 top-[19px]" : "top-[13px]"}`} />
+            <span className={`absolute w-5 h-[1.5px] bg-white transition-all duration-300 ${mobileOpen ? "opacity-0" : "top-[19px]"}`} />
+            <span className={`absolute w-5 h-[1.5px] bg-white transition-all duration-300 ${mobileOpen ? "-rotate-45 top-[19px]" : "top-[25px]"}`} />
           </button>
         </div>
       </div>
@@ -187,7 +187,7 @@ export default function Navbar() {
             <Link
               to="/contact"
               onClick={() => setMobileOpen(false)}
-              className="mt-2 px-5 py-3 text-sm font-semibold text-navy bg-white text-center"
+              className="mt-2 px-5 py-3 text-sm font-semibold text-navy bg-gold hover:bg-gold-light text-center transition-colors"
             >
               Free Consultation
             </Link>
