@@ -52,7 +52,7 @@ export default function WhyChoose() {
                 {r.num}
               </div>
               <h3 className="font-serif text-xl font-semibold text-white mb-4">{r.title}</h3>
-              <p className="text-sm leading-relaxed text-white/30 group-hover:text-white/50 transition-colors">{r.desc}</p>
+              <p className="text-sm leading-relaxed text-white/80">{r.desc}</p>
             </div>
           ))}
         </div>
@@ -68,8 +68,8 @@ export default function WhyChoose() {
             "Licensed in Oregon",
             "Serving the Columbia River Gorge & Beyond",
           ].map((item) => (
-            <div key={item} className="flex items-center gap-3 text-[13px] font-medium tracking-wide uppercase text-white/25">
-              <div className="w-2 h-2 rounded-full bg-gold/50" />
+            <div key={item} className="flex items-center gap-3 text-[13px] font-medium tracking-wide uppercase text-white/80">
+              <div className="w-2 h-2 rounded-full bg-gold" />
               {item}
             </div>
           ))}

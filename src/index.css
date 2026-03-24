@@ -65,3 +65,77 @@
     -webkit-mask-image: linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%);
   }
 }
+
+/* Light Mode Overrides */
+html.light-mode body {
+  background: #f8f6f1;
+  color: #1a1a1a;
+}
+html.light-mode .bg-black {
+  background: #f8f6f1;
+}
+html.light-mode .text-white {
+  color: #1a1a1a;
+}
+html.light-mode .text-white\/80 {
+  color: rgba(26, 26, 26, 0.8);
+}
+html.light-mode .text-white\/70 {
+  color: rgba(26, 26, 26, 0.65);
+}
+html.light-mode .text-white\/60 {
+  color: rgba(26, 26, 26, 0.55);
+}
+html.light-mode .text-white\/50 {
+  color: rgba(26, 26, 26, 0.5);
+}
+html.light-mode .text-white\/40 {
+  color: rgba(26, 26, 26, 0.45);
+}
+html.light-mode .text-white\/35 {
+  color: rgba(26, 26, 26, 0.4);
+}
+html.light-mode .text-white\/30 {
+  color: rgba(26, 26, 26, 0.35);
+}
+html.light-mode .text-white\/25 {
+  color: rgba(26, 26, 26, 0.3);
+}
+html.light-mode .text-white\/20 {
+  color: rgba(26, 26, 26, 0.25);
+}
+html.light-mode .text-white\/15 {
+  color: rgba(26, 26, 26, 0.2);
+}
+html.light-mode .border-white\/5 {
+  border-color: rgba(26, 26, 26, 0.08);
+}
+html.light-mode .border-white\/10 {
+  border-color: rgba(26, 26, 26, 0.1);
+}
+html.light-mode .border-white\/20 {
+  border-color: rgba(26, 26, 26, 0.15);
+}
+html.light-mode .bg-white\/\[0\.03\],
+html.light-mode .bg-white\/\[0\.04\] {
+  background: rgba(26, 26, 26, 0.04);
+}
+html.light-mode .glass-strong {
+  background: rgba(26, 26, 26, 0.05);
+  border-color: rgba(26, 26, 26, 0.1);
+}
+html.light-mode nav {
+  background: rgba(248, 246, 241, 0.9) !important;
+}
+html.light-mode .bg-black\/80 {
+  background: rgba(248, 246, 241, 0.9);
+}
+html.light-mode .bg-black\/90 {
+  background: rgba(248, 246, 241, 0.95);
+}
+html.light-mode .text-navy {
+  color: #0a1628;
+}
+html.light-mode ::-webkit-scrollbar-track {
+  background: #f8f6f1;
+}

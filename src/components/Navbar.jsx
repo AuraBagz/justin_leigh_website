@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
+import { useTheme } from "../context/ThemeContext";
 
 const navLinks = [
   { label: "Practice Areas", href: "/#practice", section: "practice" },
@@ -7,6 +8,27 @@ const navLinks = [
   { label: "Why Choose Us", href: "/#why", section: "why" },
   { label: "Contact", href: "/contact" },
 ];
+
+function ThemeToggle() {
+  const { dark, toggle } = useTheme();
+  return (
+    <button
+      onClick={toggle}
+      className="relative w-12 h-6 rounded-full bg-white/10 border border-white/10 flex items-center transition-colors duration-300 hover:bg-white/15"
+      aria-label="Toggle theme"
+    >
+      <div
+        className={`absolute w-5 h-5 rounded-full transition-all duration-300 flex items-center justify-center text-[10px] ${
+          dark
+            ? "left-0.5 bg-navy text-gold"
+            : "left-[calc(100%-22px)] bg-gold text-navy"
+        }`}
+      >
+        {dark ? "🌙" : "☀️"}
+      </div>
+    </button>
+  );
+}
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
@@ -17,10 +39,7 @@ export default function Navbar() {
   useEffect(() => {
     const onScroll = () => {
       setScrolled(window.scrollY > 40);
-
-      // Only track sections on home page
       if (location.pathname !== "/") return;
-
       const sections = ["practice", "about", "why", "contact"];
       let current = "practice";
       for (const id of sections) {
@@ -35,7 +54,6 @@ export default function Navbar() {
     return () => window.removeEventListener("scroll", onScroll);
   }, [location.pathname]);
 
-  // Handle hash scrolling when navigating from another page
   useEffect(() => {
     if (location.hash) {
       setTimeout(() => {
@@ -55,30 +73,33 @@ export default function Navbar() {
           : "bg-transparent"
       }`}
     >
-      <div className="max-w-7xl mx-auto px-6 h-[72px] flex items-center justify-between">
-        <Link to="/" className="flex items-center gap-3 group">
-          <div className="w-8 h-8 border border-gold/60 flex items-center justify-center text-gold font-serif font-bold text-sm group-hover:bg-gold/10 transition-colors">
-            JL
-          </div>
-          <span className="font-medium tracking-tight text-white text-sm hidden sm:block">
-            Justin D. Leigh
-          </span>
-        </Link>
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 h-[72px] flex items-center justify-between">
+        <div className="flex items-center gap-3">
+          <ThemeToggle />
+          <Link to="/" className="flex items-center gap-3 group">
+            <div className="w-8 h-8 border border-gold/60 flex items-center justify-center text-gold font-serif font-bold text-sm group-hover:bg-gold/10 transition-colors">
+              JL
+            </div>
+            <span className="font-medium tracking-tight text-white text-sm hidden sm:block">
+              Justin D. Leigh
+            </span>
+          </Link>
+        </div>
 
         <div className="hidden lg:flex items-center gap-1">
           {navLinks.map((link) => {
             const isActive =
               location.pathname === "/contact"
                 ? link.href === "/contact"
+                : location.pathname === "/ai"
+                ? false
                 : link.section === activeSection;
             return (
               <Link
                 key={link.label}
                 to={link.href}
                 className={`relative px-4 py-2 text-[13px] font-medium tracking-wide transition-colors ${
-                  isActive
-                    ? "text-white"
-                    : "text-white/40 hover:text-white/70"
+                  isActive ? "text-white" : "text-white/40 hover:text-white/70"
                 }`}
               >
                 {isActive && (
@@ -91,6 +112,14 @@ export default function Navbar() {
         </div>
 
         <div className="hidden lg:flex items-center gap-3">
+          <Link
+            to="/ai"
+            className={`px-4 py-2 text-[12px] font-semibold tracking-wide border border-gold/60 text-gold hover:bg-gold/10 transition-all duration-300 ${
+              location.pathname === "/ai" ? "bg-gold/10" : ""
+            }`}
+          >
+            Integrate A.I.
+          </Link>
           <a
             href="tel:5094264416"
             className="text-[13px] text-gold hover:text-gold-light transition-colors px-3 py-2"
@@ -110,21 +139,9 @@ export default function Navbar() {
           className="lg:hidden flex flex-col gap-1.5 p-2"
           aria-label="Menu"
         >
-          <span
-            className={`w-5 h-px bg-white transition-transform duration-300 ${
-              mobileOpen ? "rotate-45 translate-y-[3.5px]" : ""
-            }`}
-          />
-          <span
-            className={`w-5 h-px bg-white transition-opacity duration-300 ${
-              mobileOpen ? "opacity-0" : ""
-            }`}
-          />
-          <span
-            className={`w-5 h-px bg-white transition-transform duration-300 ${
-              mobileOpen ? "-rotate-45 -translate-y-[3.5px]" : ""
-            }`}
-          />
+          <span className={`w-5 h-px bg-white transition-transform duration-300 ${mobileOpen ? "rotate-45 translate-y-[3.5px]" : ""}`} />
+          <span className={`w-5 h-px bg-white transition-opacity duration-300 ${mobileOpen ? "opacity-0" : ""}`} />
+          <span className={`w-5 h-px bg-white transition-transform duration-300 ${mobileOpen ? "-rotate-45 -translate-y-[3.5px]" : ""}`} />
         </button>
       </div>
 
@@ -132,20 +149,15 @@ export default function Navbar() {
         <div className="lg:hidden bg-black/95 backdrop-blur-xl border-t border-white/5">
           <div className="px-6 py-6 flex flex-col gap-4">
             {navLinks.map((link) => (
-              <Link
-                key={link.label}
-                to={link.href}
-                onClick={() => setMobileOpen(false)}
-                className="text-sm text-white/60 hover:text-white transition-colors"
-              >
-                {link.label}
-              </Link>
+              <Link key={link.label} to={link.href} onClick={() => setMobileOpen(false)}
+                className="text-sm text-white/60 hover:text-white transition-colors">{link.label}</Link>
             ))}
-            <Link
-              to="/contact"
-              onClick={() => setMobileOpen(false)}
-              className="mt-2 px-5 py-3 text-sm font-semibold text-navy bg-white text-center"
-            >
+            <Link to="/ai" onClick={() => setMobileOpen(false)}
+              className="text-sm text-gold hover:text-gold-light transition-colors">
+              Integrate A.I. Into Your Practice
+            </Link>
+            <Link to="/contact" onClick={() => setMobileOpen(false)}
+              className="mt-2 px-5 py-3 text-sm font-semibold text-navy bg-white text-center">
               Free Consultation
             </Link>
           </div>

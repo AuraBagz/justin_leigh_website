@@ -7,6 +7,7 @@ import WhyChoose from "./components/WhyChoose";
 import Contact from "./components/Contact";
 import Footer from "./components/Footer";
 import ContactPage from "./pages/ContactPage";
+import AIPage from "./pages/AIPage";
 
 function HomePage() {
   return (
@@ -27,6 +28,7 @@ export default function App() {
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/contact" element={<ContactPage />} />
+        <Route path="/ai" element={<AIPage />} />
       </Routes>
       <Footer />
     </>
