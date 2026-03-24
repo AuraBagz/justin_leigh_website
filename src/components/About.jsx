@@ -2,7 +2,7 @@ import useInView from "../hooks/useInView";
 
 const highlights = [
   "Licensed in Washington & Oregon",
-  "Solo Practitioner — Direct Access",
+  "Solo Practitioner - Direct Access",
   "No-Cost Initial Consultations",
   "Brewery Owner & Business Advisor",
 ];
@@ -61,7 +61,7 @@ export default function About() {
                 With a diverse practice spanning real estate, business law,
                 estate planning, personal injury, and criminal defense, Justin
                 brings unique depth to every case. When you hire Justin, you work
-                directly with Justin — not a paralegal, not an associate.
+                directly with Justin - not a paralegal, not an associate.
               </p>
               <p className="text-white/40 text-[15px] leading-relaxed">
                 Beyond the courtroom, Justin brings real-world business insight
