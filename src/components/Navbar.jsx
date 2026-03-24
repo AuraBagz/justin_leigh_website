@@ -78,8 +78,8 @@ export default function Navbar() {
           : "bg-transparent"
       }`}
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 h-[72px] flex items-center justify-between">
-        {/* Logo */}
+      <div className="w-full px-4 sm:px-6 xl:px-8 h-[72px] flex items-center">
+        {/* Logo — fixed width left */}
         <Link to="/" className="flex items-center gap-2 sm:gap-3 group flex-shrink-0">
           <div className="w-8 h-8 border border-gold/60 flex items-center justify-center text-gold font-serif font-bold text-sm group-hover:bg-gold/10 transition-colors">
             JL
@@ -89,56 +89,64 @@ export default function Navbar() {
           </span>
         </Link>
 
-        {/* Desktop Nav Links - only show on xl screens */}
-        <div className="hidden xl:flex items-center gap-1">
-          {navLinks.map((link) => {
-            const isActive =
-              location.pathname === "/contact"
-                ? link.href === "/contact"
-                : location.pathname === "/ai"
-                ? false
-                : link.section === activeSection;
-            return (
-              <Link
-                key={link.label}
-                to={link.href}
-                className={`relative px-3 py-2 text-[13px] font-medium tracking-wide transition-colors whitespace-nowrap ${
-                  isActive ? "text-white" : "text-white/40 hover:text-white/70"
-                }`}
-              >
-                {isActive && (
-                  <span className="absolute inset-x-2 -bottom-0.5 h-px bg-gradient-to-r from-transparent via-gold to-transparent" />
-                )}
-                {link.label}
-              </Link>
-            );
-          })}
-        </div>
+        {/* Desktop center + right — push everything right of logo */}
+        <div className="hidden xl:flex items-center flex-1 ml-8">
+          {/* Nav Links */}
+          <div className="flex items-center gap-1">
+            {navLinks.map((link) => {
+              const isActive =
+                location.pathname === "/contact"
+                  ? link.href === "/contact"
+                  : location.pathname === "/ai"
+                  ? false
+                  : link.section === activeSection;
+              return (
+                <Link
+                  key={link.label}
+                  to={link.href}
+                  className={`relative px-3 py-2 text-[13px] font-medium tracking-wide transition-colors whitespace-nowrap ${
+                    isActive ? "text-white" : "text-white/40 hover:text-white/70"
+                  }`}
+                >
+                  {isActive && (
+                    <span className="absolute inset-x-2 -bottom-0.5 h-px bg-gradient-to-r from-transparent via-gold to-transparent" />
+                  )}
+                  {link.label}
+                </Link>
+              );
+            })}
+          </div>
 
-        {/* Desktop Right Side - only show on xl screens */}
-        <div className="hidden xl:flex items-center gap-4">
-          <Link
-            to="/ai"
-            className="relative px-4 py-2 text-[12px] font-semibold tracking-wide border border-gold/60 text-gold hover:bg-gold hover:text-navy transition-all duration-300 whitespace-nowrap"
-          >
-            {location.pathname === "/ai" && (
-              <span className="absolute inset-x-2 -bottom-0.5 h-px bg-gradient-to-r from-transparent via-gold to-transparent" />
-            )}
-            Integrate A.I. Into Your Practice
-          </Link>
-          <a
-            href="tel:5094264416"
-            className="text-[13px] text-gold hover:text-gold-light transition-colors px-2 py-2 whitespace-nowrap"
-          >
-            (509) 426-4416
-          </a>
-          <Link
-            to="/contact"
-            className="relative px-5 py-2.5 text-[12px] font-semibold text-navy bg-gold hover:bg-gold-light transition-all duration-300 tracking-wide whitespace-nowrap"
-          >
-            Free Consultation
-          </Link>
-          <div className="ml-2">
+          {/* Spacer */}
+          <div className="flex-1" />
+
+          {/* Action buttons */}
+          <div className="flex items-center gap-4">
+            <Link
+              to="/ai"
+              className="relative px-4 py-2 text-[12px] font-semibold tracking-wide border border-gold/60 text-gold hover:bg-gold hover:text-navy transition-all duration-300 whitespace-nowrap"
+            >
+              {location.pathname === "/ai" && (
+                <span className="absolute inset-x-2 -bottom-0.5 h-px bg-gradient-to-r from-transparent via-gold to-transparent" />
+              )}
+              Integrate A.I. Into Your Practice
+            </Link>
+            <a
+              href="tel:5094264416"
+              className="text-[13px] text-gold hover:text-gold-light transition-colors whitespace-nowrap"
+            >
+              (509) 426-4416
+            </a>
+            <Link
+              to="/contact"
+              className="relative px-5 py-2.5 text-[12px] font-semibold text-navy bg-gold hover:bg-gold-light transition-all duration-300 tracking-wide whitespace-nowrap"
+            >
+              Free Consultation
+            </Link>
+          </div>
+
+          {/* Theme toggle — far right with generous spacing */}
+          <div className="ml-8">
             <ThemeToggle />
           </div>
         </div>
