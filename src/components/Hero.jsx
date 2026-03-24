@@ -62,7 +62,7 @@ export default function Hero() {
 
         {/* Subtitle */}
         <p
-          className="text-white/80 text-sm sm:text-base md:text-lg leading-relaxed max-w-2xl mb-8 sm:mb-10 px-2 animate-fade-up"
+          className="text-white text-sm sm:text-base md:text-lg leading-relaxed max-w-2xl mb-8 sm:mb-10 px-2 animate-fade-up"
           style={{ animationDelay: "0.8s" }}
         >
           Personalized legal representation across Washington and Oregon.
