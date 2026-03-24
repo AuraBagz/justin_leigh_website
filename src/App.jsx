@@ -1,3 +1,4 @@
+import { Routes, Route } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
 import PracticeAreas from "./components/PracticeAreas";
@@ -5,16 +6,28 @@ import About from "./components/About";
 import WhyChoose from "./components/WhyChoose";
 import Contact from "./components/Contact";
 import Footer from "./components/Footer";
+import ContactPage from "./pages/ContactPage";
 
-export default function App() {
+function HomePage() {
   return (
     <>
-      <Navbar />
       <Hero />
       <PracticeAreas />
       <About />
       <WhyChoose />
       <Contact />
+    </>
+  );
+}
+
+export default function App() {
+  return (
+    <>
+      <Navbar />
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/contact" element={<ContactPage />} />
+      </Routes>
       <Footer />
     </>
   );

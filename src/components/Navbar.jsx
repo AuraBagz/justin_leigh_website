@@ -1,21 +1,35 @@
 import { useState, useEffect } from "react";
+import { Link, useLocation } from "react-router-dom";
 
 const navLinks = [
-  { label: "Practice Areas", href: "#practice", active: true },
-  { label: "About", href: "#about" },
-  { label: "Why Choose Us", href: "#why" },
-  { label: "Contact", href: "#contact" },
+  { label: "Practice Areas", href: "/#practice", active: true },
+  { label: "About", href: "/#about" },
+  { label: "Why Choose Us", href: "/#why" },
+  { label: "Contact", href: "/contact" },
 ];
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
+  const location = useLocation();
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 40);
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
+
+  // Handle hash scrolling when navigating from another page
+  useEffect(() => {
+    if (location.hash) {
+      setTimeout(() => {
+        const el = document.querySelector(location.hash);
+        if (el) el.scrollIntoView({ behavior: "smooth" });
+      }, 100);
+    } else {
+      window.scrollTo(0, 0);
+    }
+  }, [location]);
 
   return (
     <nav
@@ -26,20 +40,20 @@ export default function Navbar() {
       }`}
     >
       <div className="max-w-7xl mx-auto px-6 h-[72px] flex items-center justify-between">
-        <a href="#" className="flex items-center gap-3 group">
+        <Link to="/" className="flex items-center gap-3 group">
           <div className="w-8 h-8 border border-gold/60 flex items-center justify-center text-gold font-serif font-bold text-sm group-hover:bg-gold/10 transition-colors">
             JL
           </div>
           <span className="font-medium tracking-tight text-white text-sm hidden sm:block">
             Justin D. Leigh
           </span>
-        </a>
+        </Link>
 
         <div className="hidden lg:flex items-center gap-1">
           {navLinks.map((link) => (
-            <a
+            <Link
               key={link.label}
-              href={link.href}
+              to={link.href}
               className={`relative px-4 py-2 text-[13px] font-medium tracking-wide transition-colors ${
                 link.active
                   ? "text-white"
@@ -50,7 +64,7 @@ export default function Navbar() {
                 <span className="absolute inset-x-2 -bottom-0.5 h-px bg-gradient-to-r from-transparent via-gold to-transparent" />
               )}
               {link.label}
-            </a>
+            </Link>
           ))}
         </div>
 
@@ -61,12 +75,12 @@ export default function Navbar() {
           >
             (509) 426-4416
           </a>
-          <a
-            href="#contact"
+          <Link
+            to="/contact"
             className="relative px-5 py-2.5 text-[13px] font-semibold text-navy bg-gradient-to-b from-white to-white/80 hover:from-gold-light hover:to-gold transition-all duration-300 tracking-wide"
           >
             Free Consultation
-          </a>
+          </Link>
         </div>
 
         <button
@@ -96,22 +110,22 @@ export default function Navbar() {
         <div className="lg:hidden bg-black/95 backdrop-blur-xl border-t border-white/5">
           <div className="px-6 py-6 flex flex-col gap-4">
             {navLinks.map((link) => (
-              <a
+              <Link
                 key={link.label}
-                href={link.href}
+                to={link.href}
                 onClick={() => setMobileOpen(false)}
                 className="text-sm text-white/60 hover:text-white transition-colors"
               >
                 {link.label}
-              </a>
+              </Link>
             ))}
-            <a
-              href="#contact"
+            <Link
+              to="/contact"
               onClick={() => setMobileOpen(false)}
               className="mt-2 px-5 py-3 text-sm font-semibold text-navy bg-white text-center"
             >
               Free Consultation
-            </a>
+            </Link>
           </div>
         </div>
       )}

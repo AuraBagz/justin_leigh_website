@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import useInView from "../hooks/useInView";
 
 export default function Contact() {
@@ -43,14 +44,12 @@ export default function Contact() {
           >
             Call (509) 426-4416
           </a>
-          <a
-            href="https://www.justindleigh.com/"
-            target="_blank"
-            rel="noopener noreferrer"
+          <Link
+            to="/contact"
             className="glass-strong px-8 py-4 text-white/60 text-sm font-medium tracking-wide hover:text-white hover:bg-white/10 transition-all"
           >
             Book Online
-          </a>
+          </Link>
         </div>
 
         <div

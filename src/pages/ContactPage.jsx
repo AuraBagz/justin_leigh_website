@@ -1,0 +1,370 @@
+import { useState } from "react";
+import { supabase } from "../lib/supabase";
+
+const initialForm = {
+  name: "",
+  email: "",
+  phone: "",
+  subject: "",
+  message: "",
+  opposing_party: "",
+  how_heard: "",
+  real_estate_inquiry: "",
+  court_case: "",
+  other_attorney: "",
+};
+
+export default function ContactPage() {
+  const [form, setForm] = useState(initialForm);
+  const [status, setStatus] = useState("idle"); // idle | sending | success | error
+  const [errorMsg, setErrorMsg] = useState("");
+
+  function handleChange(e) {
+    setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+  }
+
+  async function handleSubmit(e) {
+    e.preventDefault();
+    setStatus("sending");
+    setErrorMsg("");
+
+    try {
+      // Insert into Supabase
+      const { error: dbError } = await supabase
+        .from("contact_submissions")
+        .insert([
+          {
+            name: form.name,
+            email: form.email,
+            phone: form.phone || null,
+            subject: form.subject,
+            message: form.message,
+            opposing_party: form.opposing_party || null,
+            how_heard: form.how_heard || null,
+            real_estate_inquiry: form.real_estate_inquiry || null,
+            court_case: form.court_case || null,
+            other_attorney: form.other_attorney || null,
+          },
+        ]);
+
+      if (dbError) throw dbError;
+
+      // Send email notification via Resend
+      try {
+        await fetch("https://api.resend.com/emails", {
+          method: "POST",
+          headers: {
+            Authorization: `Bearer ${import.meta.env.VITE_RESEND_API_KEY}`,
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            from: "Law Office Contact <onboarding@resend.dev>",
+            to: ["justindleigh@gmail.com"],
+            subject: `New Contact: ${form.subject} - ${form.name}`,
+            html: buildEmailHtml(form),
+          }),
+        });
+      } catch {
+        // Email failure shouldn't block form success
+        console.warn("Email notification failed, but form was saved.");
+      }
+
+      setStatus("success");
+      setForm(initialForm);
+    } catch (err) {
+      console.error("Submission error:", err);
+      setErrorMsg(err.message || "Something went wrong. Please try again.");
+      setStatus("error");
+    }
+  }
+
+  if (status === "success") {
+    return (
+      <section className="min-h-screen bg-black flex items-center justify-center px-6 py-28">
+        <div className="max-w-xl text-center">
+          <div className="w-16 h-16 bg-gold/20 flex items-center justify-center mx-auto mb-6">
+            <svg viewBox="0 0 24 24" fill="none" className="w-8 h-8">
+              <path
+                d="M5 13l4 4L19 7"
+                stroke="#c9a84c"
+                strokeWidth="2.5"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+            </svg>
+          </div>
+          <h1 className="font-serif text-4xl font-light text-white mb-4">
+            Thank You
+          </h1>
+          <p className="text-white/50 text-lg leading-relaxed mb-8">
+            Your inquiry has been received. Justin typically responds within two
+            business days. If your matter is urgent, please call directly.
+          </p>
+          <a
+            href="/"
+            className="inline-block px-8 py-4 bg-gold text-navy text-sm font-bold tracking-wide hover:bg-gold-light transition-colors"
+          >
+            Return Home
+          </a>
+        </div>
+      </section>
+    );
+  }
+
+  return (
+    <section className="min-h-screen bg-black py-28 px-6">
+      <div className="max-w-4xl mx-auto">
+        {/* Header */}
+        <div className="text-center mb-14">
+          <span className="text-[11px] font-semibold tracking-[4px] uppercase text-gold mb-4 block">
+            Get in Touch
+          </span>
+          <h1 className="font-serif text-[clamp(2rem,4vw,3.5rem)] font-light text-white mb-4">
+            Schedule a{" "}
+            <span className="text-gradient-gold font-semibold">
+              Consultation
+            </span>
+          </h1>
+          <p className="text-white/40 text-base sm:text-lg max-w-2xl mx-auto leading-relaxed">
+            I prioritize accessibility and responsiveness, meeting clients at
+            locations that best suit their needs. I offer complimentary initial
+            consultations to discuss your legal matters and develop a plan
+            tailored to your goals.
+          </p>
+          <p className="text-white/30 text-sm mt-3">
+            I typically respond within two business days. If your matter is
+            urgent, please indicate that in the subject line.
+          </p>
+        </div>
+
+        {/* Contact Info Bar */}
+        <div className="grid sm:grid-cols-3 gap-6 mb-14 py-6 border-t border-b border-white/5">
+          {[
+            {
+              label: "Office",
+              value: "106 N. Grant St.\nGoldendale, WA 98620",
+            },
+            { label: "Hours", value: "By Appointment Only" },
+            { label: "Phone", value: "(509) 426-4416" },
+          ].map((item) => (
+            <div key={item.label} className="text-center">
+              <div className="text-[11px] font-semibold tracking-[3px] uppercase text-white/25 mb-2">
+                {item.label}
+              </div>
+              <div className="font-serif text-lg text-white/70 whitespace-pre-line leading-snug">
+                {item.value}
+              </div>
+            </div>
+          ))}
+        </div>
+
+        {/* Form */}
+        <form onSubmit={handleSubmit} className="space-y-8">
+          {/* Name + Email */}
+          <div className="grid sm:grid-cols-2 gap-6">
+            <FormField
+              label="Name"
+              name="name"
+              required
+              value={form.name}
+              onChange={handleChange}
+              placeholder="Your full name"
+            />
+            <FormField
+              label="Email"
+              name="email"
+              type="email"
+              required
+              value={form.email}
+              onChange={handleChange}
+              placeholder="you@example.com"
+            />
+          </div>
+
+          {/* Phone + Subject */}
+          <div className="grid sm:grid-cols-2 gap-6">
+            <FormField
+              label="Phone"
+              name="phone"
+              type="tel"
+              value={form.phone}
+              onChange={handleChange}
+              placeholder="(optional)"
+            />
+            <FormField
+              label="Subject"
+              name="subject"
+              required
+              value={form.subject}
+              onChange={handleChange}
+              placeholder="Brief description of your inquiry"
+            />
+          </div>
+
+          {/* Message */}
+          <FormField
+            label="How can I help you?"
+            name="message"
+            textarea
+            required
+            value={form.message}
+            onChange={handleChange}
+            placeholder="Please describe your legal matter..."
+          />
+
+          {/* Opposing Party */}
+          <FormField
+            label="Name of Opposing Party/Parties"
+            name="opposing_party"
+            textarea
+            value={form.opposing_party}
+            onChange={handleChange}
+            placeholder="For conflict review purposes (optional)"
+          />
+
+          {/* How Heard */}
+          <FormField
+            label="How did you hear about me?"
+            name="how_heard"
+            value={form.how_heard}
+            onChange={handleChange}
+            placeholder="(optional)"
+          />
+
+          {/* Real Estate */}
+          <FormField
+            label="Is your inquiry pertaining to real estate?"
+            name="real_estate_inquiry"
+            value={form.real_estate_inquiry}
+            onChange={handleChange}
+            placeholder="If yes, please include address or parcel number (optional)"
+          />
+
+          {/* Court Case */}
+          <FormField
+            label="Is your matter related to an existing court case?"
+            name="court_case"
+            value={form.court_case}
+            onChange={handleChange}
+            placeholder="If yes, please provide case details (optional)"
+          />
+
+          {/* Other Attorney */}
+          <FormField
+            label="Is there another attorney involved?"
+            name="other_attorney"
+            value={form.other_attorney}
+            onChange={handleChange}
+            placeholder="If yes, please provide their name (optional)"
+          />
+
+          {/* Error message */}
+          {status === "error" && (
+            <div className="bg-red-500/10 border border-red-500/20 px-5 py-4 text-red-400 text-sm">
+              {errorMsg}
+            </div>
+          )}
+
+          {/* Disclaimer */}
+          <p className="text-white/20 text-xs leading-relaxed">
+            Please do not submit any confidential or sensitive information
+            through this form. Submitting this form does not create an
+            attorney-client relationship.
+          </p>
+
+          {/* Submit */}
+          <button
+            type="submit"
+            disabled={status === "sending"}
+            className="w-full sm:w-auto px-10 py-4 bg-gold text-navy text-sm font-bold tracking-wide hover:bg-gold-light transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+          >
+            {status === "sending" ? "Submitting..." : "Submit Inquiry"}
+          </button>
+        </form>
+      </div>
+    </section>
+  );
+}
+
+function FormField({
+  label,
+  name,
+  type = "text",
+  required,
+  textarea,
+  value,
+  onChange,
+  placeholder,
+}) {
+  const baseClass =
+    "w-full bg-white/[0.04] border border-white/10 px-4 py-3.5 text-white text-sm placeholder:text-white/20 focus:outline-none focus:border-gold/50 transition-colors";
+
+  return (
+    <div>
+      <label
+        htmlFor={name}
+        className="block text-[13px] font-medium text-white/50 mb-2"
+      >
+        {label}
+        {required && <span className="text-gold ml-1">*</span>}
+      </label>
+      {textarea ? (
+        <textarea
+          id={name}
+          name={name}
+          required={required}
+          value={value}
+          onChange={onChange}
+          placeholder={placeholder}
+          rows={4}
+          className={baseClass + " resize-y min-h-[100px]"}
+        />
+      ) : (
+        <input
+          id={name}
+          name={name}
+          type={type}
+          required={required}
+          value={value}
+          onChange={onChange}
+          placeholder={placeholder}
+          className={baseClass}
+        />
+      )}
+    </div>
+  );
+}
+
+function buildEmailHtml(form) {
+  const fields = [
+    ["Name", form.name],
+    ["Email", form.email],
+    ["Phone", form.phone],
+    ["Subject", form.subject],
+    ["Message", form.message],
+    ["Opposing Party", form.opposing_party],
+    ["How They Heard", form.how_heard],
+    ["Real Estate Inquiry", form.real_estate_inquiry],
+    ["Court Case", form.court_case],
+    ["Other Attorney", form.other_attorney],
+  ].filter(([, v]) => v);
+
+  const rows = fields
+    .map(
+      ([label, value]) =>
+        `<tr><td style="padding:8px 12px;font-weight:bold;color:#c9a84c;vertical-align:top;white-space:nowrap">${label}</td><td style="padding:8px 12px;color:#ffffff">${value.replace(/\n/g, "<br>")}</td></tr>`
+    )
+    .join("");
+
+  return `
+    <div style="background:#0a1628;padding:32px;font-family:Arial,sans-serif">
+      <h2 style="color:#c9a84c;margin:0 0 24px">New Contact Form Submission</h2>
+      <table style="width:100%;border-collapse:collapse;background:#000;border:1px solid #1a2a44">
+        ${rows}
+      </table>
+      <p style="color:#666;font-size:12px;margin-top:24px">
+        Submitted via justindleigh.com contact form at ${new Date().toLocaleString()}
+      </p>
+    </div>
+  `;
+}

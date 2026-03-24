@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import VideoPlayer from "./VideoPlayer";
 
 const badges = [
@@ -75,13 +76,13 @@ export default function Hero() {
           className="flex flex-wrap items-center justify-center gap-4 animate-fade-up"
           style={{ animationDelay: "0.95s" }}
         >
-          <a
-            href="#contact"
+          <Link
+            to="/contact"
             className="group relative px-8 py-4 bg-black border border-white/20 text-white text-sm font-semibold tracking-wide hover:border-gold/60 transition-all duration-300"
           >
             <span className="relative z-10">Schedule Consultation</span>
             <div className="absolute inset-0 bg-gold/5 opacity-0 group-hover:opacity-100 transition-opacity" />
-          </a>
+          </Link>
           <a
             href="tel:5094264416"
             className="px-8 py-4 bg-gold text-navy text-sm font-bold tracking-wide hover:bg-gold-light transition-colors duration-300"
