@@ -121,7 +121,7 @@ export default function Hero() {
             {[...logoPlaceholders, ...logoPlaceholders].map((name, i) => (
               <span
                 key={i}
-                className="text-[13px] font-medium tracking-widest uppercase text-white/20 flex-shrink-0"
+                className="text-[13px] font-medium tracking-widest uppercase text-white flex-shrink-0"
               >
                 {name}
               </span>

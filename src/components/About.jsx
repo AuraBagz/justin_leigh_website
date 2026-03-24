@@ -12,7 +12,6 @@ export default function About() {
 
   return (
     <section id="about" className="relative bg-black py-28 px-6 overflow-hidden">
-      <div className="absolute top-1/2 left-0 -translate-y-1/2 w-[500px] h-[500px] bg-gold/[0.03] rounded-full blur-[120px] pointer-events-none" />
 
       <div ref={ref} className="max-w-7xl mx-auto relative">
         <div className="grid lg:grid-cols-2 gap-16 lg:gap-24 items-center">

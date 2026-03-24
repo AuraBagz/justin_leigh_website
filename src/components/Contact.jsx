@@ -4,8 +4,13 @@ export default function Contact() {
   const [ref, inView] = useInView();
 
   return (
-    <section id="contact" className="relative bg-black py-28 px-6 overflow-hidden">
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-gold/[0.04] rounded-full blur-[150px] pointer-events-none" />
+    <section
+      id="contact"
+      className="relative py-28 px-6 overflow-hidden"
+      style={{
+        background: "radial-gradient(ellipse 80% 50% at 50% 0%, rgba(201,168,76,0.07) 0%, rgba(201,168,76,0.02) 40%, #000 100%)",
+      }}
+    >
 
       <div ref={ref} className="max-w-4xl mx-auto text-center relative">
         <div
