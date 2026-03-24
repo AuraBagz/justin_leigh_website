@@ -18,6 +18,7 @@ export default function ContactPage() {
   const [form, setForm] = useState(initialForm);
   const [status, setStatus] = useState("idle");
   const [errorMsg, setErrorMsg] = useState("");
+  const [copied, setCopied] = useState(false);
 
   function handleChange(e) {
     setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }));
@@ -118,16 +119,35 @@ export default function ContactPage() {
 
         {/* Contact Info Bar */}
         <div className="grid sm:grid-cols-3 gap-6 mb-14 py-6 border-t border-b border-white/5">
-          {[
-            { label: "Office", value: "106 N. Grant St.\nGoldendale, WA 98620" },
-            { label: "Hours", value: "By Appointment Only" },
-            { label: "Phone", value: "(509) 426-4416" },
-          ].map((item) => (
-            <div key={item.label} className="text-center">
-              <div className="text-[11px] font-semibold tracking-[3px] uppercase text-white/25 mb-2">{item.label}</div>
-              <div className="font-serif text-lg text-white/70 whitespace-pre-line leading-snug">{item.value}</div>
+          <div className="text-center">
+            <div className="text-[11px] font-semibold tracking-[3px] uppercase text-white/25 mb-2">Office</div>
+            <div className="font-serif text-lg text-white/70 leading-snug">
+              106 N. Grant St.
+              <br />
+              Goldendale, WA 98620
             </div>
-          ))}
+            <button
+              onClick={() => {
+                navigator.clipboard.writeText("106 N. Grant St., Goldendale, WA 98620");
+                setCopied(true);
+                setTimeout(() => setCopied(false), 2000);
+              }}
+              className="mt-2 inline-flex items-center gap-1.5 px-3 py-1 text-[11px] font-medium text-gold/70 hover:text-gold border border-gold/20 hover:border-gold/40 transition-all"
+            >
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="w-3 h-3">
+                {copied ? <path d="M5 13l4 4L19 7" /> : <><rect x="9" y="9" width="13" height="13" rx="2" /><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1" /></>}
+              </svg>
+              {copied ? "Copied!" : "Copy Address"}
+            </button>
+          </div>
+          <div className="text-center">
+            <div className="text-[11px] font-semibold tracking-[3px] uppercase text-white/25 mb-2">Hours</div>
+            <div className="font-serif text-lg text-white/70 leading-snug">By Appointment Only</div>
+          </div>
+          <div className="text-center">
+            <div className="text-[11px] font-semibold tracking-[3px] uppercase text-white/25 mb-2">Phone</div>
+            <div className="font-serif text-lg text-white/70 leading-snug">(509) 426-4416</div>
+          </div>
         </div>
 
         {/* Location Section - Map + Office Image */}
@@ -136,7 +156,7 @@ export default function ContactPage() {
           <div className="relative overflow-hidden border border-white/10">
             <iframe
               title="Office Location"
-              src="https://www.google.com/maps?q=106+N+Grant+St,+Goldendale,+WA+98620&output=embed&z=16"
+              src="https://maps.google.com/maps?q=45.82073,-120.82835&z=17&output=embed"
               width="100%"
               height="320"
               style={{ border: 0, filter: "invert(90%) hue-rotate(180deg) saturate(0.3) brightness(0.8)" }}
