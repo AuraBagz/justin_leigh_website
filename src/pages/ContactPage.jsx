@@ -49,21 +49,21 @@ export default function ContactPage() {
 
       if (dbError) throw dbError;
 
-      // Send email notification via Resend
+      // Send email notification via Supabase Edge Function
       try {
-        await fetch("https://api.resend.com/emails", {
-          method: "POST",
-          headers: {
-            Authorization: `Bearer ${import.meta.env.VITE_RESEND_API_KEY}`,
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            from: "Law Office Contact <onboarding@resend.dev>",
-            to: ["justindleigh@gmail.com"],
-            subject: `New Contact: ${form.subject} - ${form.name}`,
-            html: buildEmailHtml(form),
-          }),
-        });
+        const supabaseUrl = import.meta.env.VITE_SUPABASE_URL;
+        const supabaseKey = import.meta.env.VITE_SUPABASE_ANON_KEY;
+        await fetch(
+          `${supabaseUrl}/functions/v1/send-contact-email`,
+          {
+            method: "POST",
+            headers: {
+              Authorization: `Bearer ${supabaseKey}`,
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify(form),
+          }
+        );
       } catch {
         // Email failure shouldn't block form success
         console.warn("Email notification failed, but form was saved.");
