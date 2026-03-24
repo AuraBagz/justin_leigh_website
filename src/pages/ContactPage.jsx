@@ -136,7 +136,7 @@ export default function ContactPage() {
           <div className="relative overflow-hidden border border-white/10">
             <iframe
               title="Office Location"
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2792.5!2d-120.8283!3d45.8214!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5496a8e3a4e5c9e7%3A0x1234567890abcdef!2s106%20N%20Grant%20St%2C%20Goldendale%2C%20WA%2098620!5e0!3m2!1sen!2sus!4v1711300000000!5m2!1sen!2sus"
+              src="https://www.google.com/maps?q=106+N+Grant+St,+Goldendale,+WA+98620&output=embed&z=16"
               width="100%"
               height="320"
               style={{ border: 0, filter: "invert(90%) hue-rotate(180deg) saturate(0.3) brightness(0.8)" }}
