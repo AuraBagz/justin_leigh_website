@@ -39,7 +39,7 @@ export default function WhyChoose() {
           <div className="w-16 h-px bg-gold/40 mx-auto mt-6" />
         </div>
 
-        <div className="grid md:grid-cols-3 gap-px bg-white/5">
+        <div className="grid md:grid-cols-3 gap-px">
           {reasons.map((r, i) => (
             <div
               key={r.num}

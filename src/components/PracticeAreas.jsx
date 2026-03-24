@@ -71,7 +71,7 @@ export default function PracticeAreas() {
           <div className="w-16 h-px bg-gold/40 mx-auto mt-6" />
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-px bg-white/5">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-px">
           {areas.map((area, i) => (
             <div
               key={area.title}
