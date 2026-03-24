@@ -30,19 +30,19 @@ export default function Hero() {
       <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent z-[1]" />
 
       {/* Hero Content */}
-      <div className="relative z-10 flex-1 flex flex-col items-center justify-center text-center px-6 pt-24 pb-32 max-w-5xl mx-auto">
+      <div className="relative z-10 flex-1 flex flex-col items-center justify-center text-center px-4 sm:px-6 pt-20 sm:pt-24 pb-8 sm:pb-16 max-w-5xl mx-auto">
         {/* Badges */}
-        <div className="flex flex-wrap items-center justify-center gap-3 mb-10">
+        <div className="flex flex-wrap items-center justify-center gap-2 sm:gap-3 mb-6 sm:mb-10">
           {badges.map((badge, i) => (
             <div
               key={badge.label}
-              className="glass-strong flex items-center gap-2.5 px-4 py-2 rounded-none animate-fade-up"
+              className="glass-strong flex items-center gap-2 sm:gap-2.5 px-3 sm:px-4 py-1.5 sm:py-2 rounded-none animate-fade-up"
               style={{ animationDelay: `${0.3 + i * 0.12}s` }}
             >
-              <span className="w-6 h-6 bg-gold/20 text-gold text-[10px] font-bold flex items-center justify-center">
+              <span className="w-5 h-5 sm:w-6 sm:h-6 bg-gold/20 text-gold text-[9px] sm:text-[10px] font-bold flex items-center justify-center">
                 {badge.icon}
               </span>
-              <span className="text-[13px] text-white/70 font-medium">
+              <span className="text-[11px] sm:text-[13px] text-white/70 font-medium">
                 {badge.label}
               </span>
             </div>
@@ -51,7 +51,7 @@ export default function Hero() {
 
         {/* Headline */}
         <h1
-          className="font-serif text-[clamp(2.5rem,7vw,5rem)] font-light leading-[1.05] tracking-tight text-white mb-6 animate-fade-up"
+          className="font-serif text-[clamp(2rem,8vw,5rem)] font-light leading-[1.05] tracking-tight text-white mb-4 sm:mb-6 animate-fade-up"
           style={{ animationDelay: "0.65s" }}
         >
           Where{" "}
@@ -62,7 +62,7 @@ export default function Hero() {
 
         {/* Subtitle */}
         <p
-          className="text-white/40 text-base sm:text-lg leading-relaxed max-w-2xl mb-10 animate-fade-up"
+          className="text-white/40 text-sm sm:text-base md:text-lg leading-relaxed max-w-2xl mb-8 sm:mb-10 px-2 animate-fade-up"
           style={{ animationDelay: "0.8s" }}
         >
           Personalized legal representation across Washington and Oregon.
@@ -73,56 +73,58 @@ export default function Hero() {
 
         {/* Buttons */}
         <div
-          className="flex flex-wrap items-center justify-center gap-4 animate-fade-up"
+          className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 w-full sm:w-auto animate-fade-up"
           style={{ animationDelay: "0.95s" }}
         >
           <Link
             to="/contact"
-            className="group relative px-8 py-4 bg-black border border-white/20 text-white text-sm font-semibold tracking-wide hover:border-gold/60 transition-all duration-300"
+            className="group relative w-full sm:w-auto px-8 py-3.5 sm:py-4 bg-black border border-white/20 text-white text-sm font-semibold tracking-wide hover:border-gold/60 transition-all duration-300 text-center"
           >
             <span className="relative z-10">Schedule Consultation</span>
             <div className="absolute inset-0 bg-gold/5 opacity-0 group-hover:opacity-100 transition-opacity" />
           </Link>
           <a
             href="tel:5094264416"
-            className="px-8 py-4 bg-gold text-navy text-sm font-bold tracking-wide hover:bg-gold-light transition-colors duration-300"
+            className="w-full sm:w-auto px-8 py-3.5 sm:py-4 bg-gold text-navy text-sm font-bold tracking-wide hover:bg-gold-light transition-colors duration-300 text-center"
           >
             Call (509) 426-4416
           </a>
         </div>
       </div>
 
-      {/* Lower Third Overlay */}
-      <div
-        className="absolute bottom-40 left-6 sm:left-12 z-20 flex animate-slide-in-left"
-        style={{ animationDelay: "1.2s" }}
-      >
-        <div className="w-1.5 bg-gold" />
-        <div className="bg-black/80 backdrop-blur-xl px-6 py-4 border-y border-r border-white/5">
-          <div className="font-serif text-2xl font-semibold text-white leading-tight">
-            Justin D. Leigh
+      {/* Lower Third Overlay - static on mobile, absolute on desktop */}
+      <div className="relative z-20 px-4 pb-6 sm:pb-0 sm:px-0 sm:absolute sm:bottom-40 sm:left-12">
+        <div
+          className="flex animate-slide-in-left mx-auto sm:mx-0 w-fit"
+          style={{ animationDelay: "1.2s" }}
+        >
+          <div className="w-1 sm:w-1.5 bg-gold" />
+          <div className="bg-black/80 backdrop-blur-xl px-4 sm:px-6 py-3 sm:py-4 border-y border-r border-white/5">
+            <div className="font-serif text-lg sm:text-2xl font-semibold text-white leading-tight">
+              Justin D. Leigh
+            </div>
+            <div className="text-[10px] sm:text-[11px] font-semibold tracking-[2px] sm:tracking-[3px] uppercase text-gold mt-0.5 sm:mt-1">
+              Attorney-at-Law
+            </div>
           </div>
-          <div className="text-[11px] font-semibold tracking-[3px] uppercase text-gold mt-1">
-            Attorney-at-Law
+          <div className="bg-gold px-3 sm:px-4 flex items-center justify-center">
+            <span className="text-[9px] sm:text-[10px] font-bold tracking-wider uppercase text-navy leading-tight text-center">
+              WA & OR
+              <br />
+              Licensed
+            </span>
           </div>
-        </div>
-        <div className="bg-gold px-4 flex items-center justify-center">
-          <span className="text-[10px] font-bold tracking-wider uppercase text-navy leading-tight text-center">
-            WA & OR
-            <br />
-            Licensed
-          </span>
         </div>
       </div>
 
       {/* Practice Area Marquee */}
       <div className="relative z-10 border-t border-white/5 bg-black">
-        <div className="mask-fade-edges py-5 overflow-hidden">
-          <div className="flex items-center gap-12 animate-marquee whitespace-nowrap">
+        <div className="mask-fade-edges py-4 sm:py-5 overflow-hidden">
+          <div className="flex items-center gap-8 sm:gap-12 animate-marquee whitespace-nowrap">
             {[...logoPlaceholders, ...logoPlaceholders].map((name, i) => (
               <span
                 key={i}
-                className="text-[13px] font-medium tracking-widest uppercase text-white flex-shrink-0"
+                className="text-[11px] sm:text-[13px] font-medium tracking-widest uppercase text-white flex-shrink-0"
               >
                 {name}
               </span>
