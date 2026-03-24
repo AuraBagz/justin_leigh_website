@@ -2,22 +2,38 @@ import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 
 const navLinks = [
-  { label: "Practice Areas", href: "/#practice", active: true },
-  { label: "About", href: "/#about" },
-  { label: "Why Choose Us", href: "/#why" },
+  { label: "Practice Areas", href: "/#practice", section: "practice" },
+  { label: "About", href: "/#about", section: "about" },
+  { label: "Why Choose Us", href: "/#why", section: "why" },
   { label: "Contact", href: "/contact" },
 ];
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [activeSection, setActiveSection] = useState("practice");
   const location = useLocation();
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 40);
+    const onScroll = () => {
+      setScrolled(window.scrollY > 40);
+
+      // Only track sections on home page
+      if (location.pathname !== "/") return;
+
+      const sections = ["practice", "about", "why", "contact"];
+      let current = "practice";
+      for (const id of sections) {
+        const el = document.getElementById(id);
+        if (el && el.getBoundingClientRect().top <= 200) {
+          current = id;
+        }
+      }
+      setActiveSection(current);
+    };
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
-  }, []);
+  }, [location.pathname]);
 
   // Handle hash scrolling when navigating from another page
   useEffect(() => {
@@ -50,22 +66,28 @@ export default function Navbar() {
         </Link>
 
         <div className="hidden lg:flex items-center gap-1">
-          {navLinks.map((link) => (
-            <Link
-              key={link.label}
-              to={link.href}
-              className={`relative px-4 py-2 text-[13px] font-medium tracking-wide transition-colors ${
-                link.active
-                  ? "text-white"
-                  : "text-white/40 hover:text-white/70"
-              }`}
-            >
-              {link.active && (
-                <span className="absolute inset-x-2 -bottom-0.5 h-px bg-gradient-to-r from-transparent via-gold to-transparent" />
-              )}
-              {link.label}
-            </Link>
-          ))}
+          {navLinks.map((link) => {
+            const isActive =
+              location.pathname === "/contact"
+                ? link.href === "/contact"
+                : link.section === activeSection;
+            return (
+              <Link
+                key={link.label}
+                to={link.href}
+                className={`relative px-4 py-2 text-[13px] font-medium tracking-wide transition-colors ${
+                  isActive
+                    ? "text-white"
+                    : "text-white/40 hover:text-white/70"
+                }`}
+              >
+                {isActive && (
+                  <span className="absolute inset-x-2 -bottom-0.5 h-px bg-gradient-to-r from-transparent via-gold to-transparent" />
+                )}
+                {link.label}
+              </Link>
+            );
+          })}
         </div>
 
         <div className="hidden lg:flex items-center gap-3">
