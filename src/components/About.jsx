@@ -21,14 +21,14 @@ export default function About() {
               inView ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-10"
             }`}
           >
-            <div className="relative">
+            <div className="relative pb-6 pr-6">
               <img
                 src="/headshot.png"
                 alt="Justin D. Leigh, Attorney-at-Law"
-                className="w-full h-[550px] object-cover object-top grayscale-[20%]"
+                className="w-full h-auto object-contain grayscale-[20%] relative z-[1]"
               />
-              <div className="absolute top-4 left-4 right-[-16px] bottom-[-16px] border border-gold/20 -z-10" />
-              <div className="absolute -bottom-6 -right-6 bg-black border border-gold/30 px-6 py-5 z-10">
+              <div className="absolute top-4 left-4 right-0 bottom-0 border border-gold/20" />
+              <div className="absolute bottom-0 right-0 bg-black border border-gold/30 px-6 py-5 z-10">
                 <div className="font-serif text-3xl font-bold text-gold leading-none">WA</div>
                 <div className="text-[10px] font-bold tracking-[2px] uppercase text-white/50 mt-1">& Oregon</div>
               </div>
