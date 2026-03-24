@@ -12,22 +12,11 @@ export default function Footer() {
             </span>
           </div>
           <div className="flex items-center gap-8">
-            {["About", "Practice Areas", "Contact"].map((link) => (
-              <a
-                key={link}
-                href={`#${link.toLowerCase().replace(/\s+/g, "-")}`}
-                className="text-xs text-white/25 hover:text-gold/70 transition-colors tracking-wide"
-              >
-                {link}
-              </a>
-            ))}
             <a
-              href="https://www.justindleigh.com/"
-              target="_blank"
-              rel="noopener noreferrer"
+              href="/#about"
               className="text-xs text-white/25 hover:text-gold/70 transition-colors tracking-wide"
             >
-              Main Website
+              About
             </a>
           </div>
         </div>
