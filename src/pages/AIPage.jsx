@@ -46,12 +46,12 @@ export default function AIPage() {
     e.preventDefault();
     setStatus("sending");
     try {
-      await supabase.from("contact_submissions").insert([{
+      await supabase.from("ai_inquiries").insert([{
         name: form.name,
         email: form.email,
         phone: form.phone || null,
-        subject: "AI Consultation Inquiry - Stalefish",
         message: form.message,
+        status: "new",
       }]);
 
       const supabaseUrl = import.meta.env.VITE_SUPABASE_URL;
@@ -59,7 +59,7 @@ export default function AIPage() {
       await fetch(`${supabaseUrl}/functions/v1/send-contact-email`, {
         method: "POST",
         headers: { Authorization: `Bearer ${supabaseKey}`, "Content-Type": "application/json" },
-        body: JSON.stringify({ ...form, subject: "AI Consultation Inquiry - Stalefish" }),
+        body: JSON.stringify({ ...form, type: "ai_inquiry" }),
       }).catch(() => {});
 
       setStatus("success");
