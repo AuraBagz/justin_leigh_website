@@ -38,15 +38,9 @@ export default function Contact() {
           }`}
           style={{ transitionDelay: inView ? "0.3s" : "0s" }}
         >
-          <a
-            href="tel:5094264416"
-            className="px-8 py-4 bg-gold text-navy text-sm font-bold tracking-wide hover:bg-gold-light transition-colors"
-          >
-            Call (509) 426-4416
-          </a>
           <Link
             to="/contact"
-            className="glass-strong px-8 py-4 text-white/60 text-sm font-medium tracking-wide hover:text-white hover:bg-white/10 transition-all"
+            className="px-8 py-4 bg-gold text-navy text-sm font-bold tracking-wide hover:bg-gold-light transition-colors"
           >
             Book Online
           </Link>

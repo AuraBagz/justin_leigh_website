@@ -68,8 +68,8 @@ export default function WhyChoose() {
             "Licensed in Oregon",
             "Serving the Columbia River Gorge & Beyond",
           ].map((item) => (
-            <div key={item} className="flex items-center gap-3 text-[13px] font-medium tracking-wide uppercase text-white/80">
-              <div className="w-2 h-2 rounded-full bg-gold" />
+            <div key={item} className="flex items-center justify-center gap-3 text-[13px] font-medium tracking-wide uppercase text-white/80 w-full sm:w-auto text-center">
+              <div className="w-2 h-2 rounded-full bg-gold flex-shrink-0" />
               {item}
             </div>
           ))}

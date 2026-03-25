@@ -83,12 +83,6 @@ export default function Hero() {
             <span className="relative z-10">Schedule Consultation</span>
             <div className="absolute inset-0 bg-gold/5 opacity-0 group-hover:opacity-100 transition-opacity" />
           </Link>
-          <a
-            href="tel:5094264416"
-            className="w-full sm:w-auto px-8 py-3.5 sm:py-4 bg-gold text-navy text-sm font-bold tracking-wide hover:bg-gold-light transition-colors duration-300 text-center"
-          >
-            Call (509) 426-4416
-          </a>
         </div>
       </div>
 

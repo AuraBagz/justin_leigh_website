@@ -38,7 +38,7 @@ const areas = [
     ],
   },
   {
-    title: "Estate Planning & Probate",
+    title: "Estate Planning & Probates",
     desc: "Protect your legacy with comprehensive estate planning, wills, trusts, and probate administration.",
     icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="w-6 h-6"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" /></svg>,
     bullets: [
@@ -101,7 +101,7 @@ const areas = [
     desc: "Vigorous defense of your rights with personalized attention to every detail of your case.",
     icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="w-6 h-6"><circle cx="12" cy="12" r="10" /><path d="M12 6v6l4 2" /></svg>,
     bullets: [
-      "I offer discrete, personalized criminal defense representation for select clients.",
+      "Discrete, personalized criminal defense representation for select clients.",
     ],
   },
   {
@@ -169,9 +169,6 @@ export default function PracticeAreas() {
             inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
           }`}
         >
-          <span className="text-[11px] font-semibold tracking-[4px] uppercase text-gold mb-4 block">
-            What We Do
-          </span>
           <h2 className="font-serif text-[clamp(2rem,4vw,3.5rem)] font-light text-white">
             Comprehensive{" "}
             <span className="text-gradient-gold font-semibold">Legal Services</span>
