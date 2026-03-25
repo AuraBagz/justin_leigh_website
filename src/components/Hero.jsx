@@ -21,13 +21,13 @@ const logoPlaceholders = [
 
 export default function Hero() {
   return (
-    <section className="relative min-h-screen bg-black overflow-hidden flex flex-col">
+    <section className="hero-section relative min-h-screen bg-black overflow-hidden flex flex-col">
       {/* Video Background */}
       <VideoPlayer />
 
       {/* Gradient overlays */}
-      <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-black/20 to-black/70 z-[1]" />
-      <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent z-[1]" />
+      <div className="hero-overlay-top absolute inset-0 bg-gradient-to-b from-black/80 via-black/20 to-black/70 z-[1]" />
+      <div className="hero-overlay-bottom absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent z-[1]" />
 
       {/* Hero Content */}
       <div className="relative z-10 flex-1 flex flex-col items-center justify-center text-center px-4 sm:px-6 pt-20 sm:pt-24 pb-8 sm:pb-16 max-w-5xl mx-auto">
@@ -99,7 +99,7 @@ export default function Hero() {
           style={{ animationDelay: "1.2s" }}
         >
           <div className="w-1 sm:w-1.5 bg-gold" />
-          <div className="bg-black/80 backdrop-blur-xl px-4 sm:px-6 py-3 sm:py-4 border-y border-r border-white/5">
+          <div className="hero-lower-third-bg bg-black/80 backdrop-blur-xl px-4 sm:px-6 py-3 sm:py-4 border-y border-r border-white/5">
             <div className="font-serif text-lg sm:text-2xl font-semibold text-white leading-tight">
               Justin D. Leigh
             </div>
@@ -118,7 +118,7 @@ export default function Hero() {
       </div>
 
       {/* Practice Area Marquee */}
-      <div className="relative z-10 border-t border-white/5 bg-black">
+      <div className="hero-marquee-bg relative z-10 border-t border-white/5 bg-black">
         <div className="mask-fade-edges py-4 sm:py-5 overflow-hidden">
           <div className="flex items-center gap-8 sm:gap-12 animate-marquee whitespace-nowrap">
             {[...logoPlaceholders, ...logoPlaceholders].map((name, i) => (

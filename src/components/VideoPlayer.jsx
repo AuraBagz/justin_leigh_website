@@ -40,7 +40,7 @@ const VideoPlayer = memo(function VideoPlayer() {
   }, []);
 
   return (
-    <div className="absolute bottom-[35vh] left-0 right-0 h-[80vh] z-0 overflow-hidden pointer-events-none">
+    <div className="hero-video-container absolute bottom-[35vh] left-0 right-0 h-[80vh] z-0 overflow-hidden pointer-events-none">
       <video
         ref={videoRef}
         className="w-full h-full object-cover"
