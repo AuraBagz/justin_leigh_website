@@ -161,7 +161,7 @@ export default function PracticeAreas() {
 
   return (
     <section id="practice" className="relative bg-black py-28 px-6">
-      <div className="absolute inset-x-0 top-0 h-32 bg-gradient-to-b from-black to-transparent" />
+      <div className="practice-top-gradient absolute inset-x-0 top-0 h-32 bg-gradient-to-b from-black to-transparent" />
 
       <div ref={ref} className="max-w-7xl mx-auto relative">
         <div

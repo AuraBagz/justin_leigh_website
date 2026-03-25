@@ -7,9 +7,9 @@ export default function Contact() {
   return (
     <section
       id="contact"
-      className="relative py-28 px-6 overflow-hidden"
+      className="contact-section relative py-28 px-6 overflow-hidden"
       style={{
-        background: "radial-gradient(ellipse 80% 50% at 50% 0%, rgba(201,168,76,0.07) 0%, rgba(201,168,76,0.02) 40%, #000 100%)",
+        background: "radial-gradient(ellipse 80% 50% at 50% 0%, rgba(201,168,76,0.07) 0%, rgba(201,168,76,0.02) 40%, var(--section-bg, #000) 100%)",
       }}
     >
 

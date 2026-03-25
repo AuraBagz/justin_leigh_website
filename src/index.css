@@ -170,6 +170,12 @@ html.light-mode .hero-lower-third-bg {
 html.light-mode .hero-marquee-bg {
   background: #f8f6f1 !important;
 }
+html.light-mode {
+  --section-bg: #f8f6f1;
+}
+html.light-mode .practice-top-gradient {
+  background: linear-gradient(to bottom, #f8f6f1, transparent) !important;
+}
 html.light-mode .bg-gold\/10 {
   background: rgba(201,168,76,0.12);
 }
