@@ -7,6 +7,7 @@ const initialForm = {
   phone: "",
   subject: "",
   message: "",
+  preferred_datetime: "",
   opposing_party: "",
   how_heard: "",
   real_estate_inquiry: "",
@@ -38,6 +39,7 @@ export default function ContactPage() {
           phone: form.phone || null,
           subject: form.subject,
           message: form.message,
+          preferred_datetime: form.preferred_datetime || null,
           opposing_party: form.opposing_party || null,
           how_heard: form.how_heard || null,
           real_estate_inquiry: form.real_estate_inquiry || null,
@@ -95,129 +97,129 @@ export default function ContactPage() {
 
   return (
     <section className="min-h-screen bg-black py-28 px-6">
-      <div className="max-w-4xl mx-auto">
+      <div className="max-w-7xl mx-auto">
         {/* Header */}
-        <div className="text-center mb-14">
-          <span className="text-[11px] font-semibold tracking-[4px] uppercase text-gold mb-4 block">
-            Get in Touch
-          </span>
+        <div className="text-center mb-10">
           <h1 className="font-serif text-[clamp(2rem,4vw,3.5rem)] font-light text-white mb-4">
             Schedule a{" "}
             <span className="text-gradient-gold font-semibold">Consultation</span>
           </h1>
-          <p className="text-white text-base sm:text-lg max-w-2xl mx-auto leading-relaxed">
-            I prioritize accessibility and responsiveness, meeting clients at
-            locations that best suit their needs. I offer complimentary initial
-            consultations to discuss your legal matters and develop a plan
-            tailored to your goals.
-          </p>
-          <p className="text-white/70 text-sm mt-3">
-            I typically respond within two business days. If your matter is
-            urgent, please indicate that in the subject line.
+          <p className="text-white/70 text-base max-w-2xl mx-auto leading-relaxed">
+            I offer complimentary initial consultations to discuss your legal matters
+            and develop a plan tailored to your goals. I typically respond within two business days.
           </p>
         </div>
 
-        {/* Contact Info Bar */}
-        <div className="grid sm:grid-cols-3 gap-6 mb-14 py-6 border-t border-b border-white/5">
-          <div className="text-center">
-            <div className="text-[11px] font-semibold tracking-[3px] uppercase text-white/25 mb-2">Office</div>
-            <div className="font-serif text-lg text-white/70 leading-snug">
-              106 N. Grant St.
-              <br />
-              Goldendale, WA 98620
+        {/* Two-Column Layout */}
+        <div className="grid lg:grid-cols-[1fr_380px] gap-10 lg:gap-14">
+          {/* LEFT: Form */}
+          <div>
+            <div className="text-[11px] font-semibold tracking-[3px] uppercase text-gold mb-6">
+              Consultation Request
             </div>
-            <button
-              onClick={() => {
-                navigator.clipboard.writeText("106 N. Grant St., Goldendale, WA 98620");
-                setCopied(true);
-                setTimeout(() => setCopied(false), 2000);
-              }}
-              className="mt-2 inline-flex items-center gap-1.5 px-3 py-1 text-[11px] font-medium text-gold/70 hover:text-gold border border-gold/20 hover:border-gold/40 transition-all"
-            >
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="w-3 h-3">
-                {copied ? <path d="M5 13l4 4L19 7" /> : <><rect x="9" y="9" width="13" height="13" rx="2" /><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1" /></>}
-              </svg>
-              {copied ? "Copied!" : "Copy Address"}
-            </button>
-          </div>
-          <div className="text-center">
-            <div className="text-[11px] font-semibold tracking-[3px] uppercase text-white/25 mb-2">Hours</div>
-            <div className="font-serif text-lg text-white/70 leading-snug">By Appointment Only</div>
-          </div>
-          <div className="text-center">
-            <div className="text-[11px] font-semibold tracking-[3px] uppercase text-white/25 mb-2">Phone</div>
-            <div className="font-serif text-lg text-white/70 leading-snug">(509) 426-4416</div>
-          </div>
-        </div>
-
-        {/* Location Section - Map + Office Image */}
-        <div className="grid md:grid-cols-2 gap-6 mb-14">
-          {/* Google Maps Embed */}
-          <div className="relative overflow-hidden border border-white/10">
-            <iframe
-              title="Office Location"
-              src="https://maps.google.com/maps?q=45.82073,-120.82835&z=17&output=embed"
-              width="100%"
-              height="320"
-              style={{ border: 0, filter: "invert(90%) hue-rotate(180deg) saturate(0.3) brightness(0.8)" }}
-              allowFullScreen=""
-              loading="lazy"
-              referrerPolicy="no-referrer-when-downgrade"
-            />
-            <div className="absolute bottom-0 left-0 right-0 h-8 bg-gradient-to-t from-black to-transparent" />
-          </div>
-
-          {/* Office Front Image */}
-          <div className="relative overflow-hidden border border-white/10">
-            <img
-              src="/office_front.webp"
-              alt="Law Office of Justin D. Leigh - Downtown Goldendale"
-              className="w-full h-[320px] object-cover"
-            />
-            <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black via-black/60 to-transparent p-5 pt-12">
-              <div className="text-[10px] font-semibold tracking-[3px] uppercase text-gold mb-1">Location</div>
-              <div className="font-serif text-sm text-white/80 leading-snug">
-                106 N. Grant St., Goldendale, WA 98620
+            <form onSubmit={handleSubmit} className="space-y-6">
+              <div className="grid sm:grid-cols-2 gap-5">
+                <FormField label="Name" name="name" required value={form.name} onChange={handleChange} placeholder="Your full name" />
+                <FormField label="Email" name="email" type="email" required value={form.email} onChange={handleChange} placeholder="you@example.com" />
               </div>
-              <div className="text-xs text-white/40 mt-1">
+              <div className="grid sm:grid-cols-2 gap-5">
+                <FormField label="Phone" name="phone" type="tel" value={form.phone} onChange={handleChange} placeholder="(optional)" />
+                <FormField label="Subject" name="subject" required value={form.subject} onChange={handleChange} placeholder="Brief description of your inquiry" />
+              </div>
+              <FormField label="Preferred Day/Time for Consultation" name="preferred_datetime" value={form.preferred_datetime} onChange={handleChange} placeholder="e.g. Weekday mornings, Tuesday after 2pm, etc." />
+              <FormField label="How can I help you?" name="message" textarea required value={form.message} onChange={handleChange} placeholder="Please describe your legal matter..." />
+              <FormField label="Name of Opposing Party/Parties" name="opposing_party" textarea value={form.opposing_party} onChange={handleChange} placeholder="For conflict review purposes (optional)" />
+              <FormField label="How did you hear about me?" name="how_heard" value={form.how_heard} onChange={handleChange} placeholder="(optional)" />
+              <FormField label="Is your inquiry pertaining to real estate?" name="real_estate_inquiry" value={form.real_estate_inquiry} onChange={handleChange} placeholder="If yes, please include address or parcel number (optional)" />
+              <FormField label="Is your matter related to an existing court case?" name="court_case" value={form.court_case} onChange={handleChange} placeholder="If yes, please provide case details (optional)" />
+              <FormField label="Is there another attorney involved?" name="other_attorney" value={form.other_attorney} onChange={handleChange} placeholder="If yes, please provide their name (optional)" />
+
+              {status === "error" && (
+                <div className="bg-red-500/10 border border-red-500/20 px-5 py-4 text-red-400 text-sm">{errorMsg}</div>
+              )}
+
+              <p className="text-white/20 text-xs leading-relaxed">
+                Please do not submit any confidential or sensitive information
+                through this form. Submitting this form does not create an
+                attorney-client relationship.
+              </p>
+
+              <button type="submit" disabled={status === "sending"}
+                className="w-full sm:w-auto px-10 py-4 bg-gold text-navy text-sm font-bold tracking-wide hover:bg-gold-light transition-colors disabled:opacity-50 disabled:cursor-not-allowed">
+                {status === "sending" ? "Submitting..." : "Submit Inquiry"}
+              </button>
+            </form>
+          </div>
+
+          {/* RIGHT: Office Info */}
+          <div className="space-y-6 lg:sticky lg:top-28 lg:self-start">
+            {/* Office Address */}
+            <div className="border border-white/10 p-6">
+              <div className="text-[11px] font-semibold tracking-[3px] uppercase text-gold mb-3">Office</div>
+              <div className="font-serif text-lg text-white/80 leading-snug mb-2">
+                106 N. Grant St.
+                <br />
+                Goldendale, WA 98620
+              </div>
+              <div className="text-xs text-white/40 mb-3">
                 Corner of N. Grant St. & W. Main St.
               </div>
+              <button
+                onClick={() => {
+                  navigator.clipboard.writeText("106 N. Grant St., Goldendale, WA 98620");
+                  setCopied(true);
+                  setTimeout(() => setCopied(false), 2000);
+                }}
+                className="inline-flex items-center gap-1.5 px-3 py-1.5 text-[11px] font-medium text-gold/70 hover:text-gold border border-gold/20 hover:border-gold/40 transition-all"
+              >
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="w-3 h-3">
+                  {copied ? <path d="M5 13l4 4L19 7" /> : <><rect x="9" y="9" width="13" height="13" rx="2" /><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1" /></>}
+                </svg>
+                {copied ? "Copied!" : "Copy Address"}
+              </button>
+            </div>
+
+            {/* Hours & Phone */}
+            <div className="grid grid-cols-2 gap-4">
+              <div className="border border-white/10 p-5">
+                <div className="text-[11px] font-semibold tracking-[3px] uppercase text-white/25 mb-2">Hours</div>
+                <div className="font-serif text-sm text-white/70">By Appointment Only</div>
+              </div>
+              <div className="border border-white/10 p-5">
+                <div className="text-[11px] font-semibold tracking-[3px] uppercase text-white/25 mb-2">Phone</div>
+                <a href="tel:5094264416" className="font-serif text-sm text-gold hover:text-gold-light transition-colors">(509) 426-4416</a>
+              </div>
+            </div>
+
+            {/* Google Map */}
+            <div className="relative overflow-hidden border border-white/10">
+              <iframe
+                title="Office Location"
+                src="https://maps.google.com/maps?q=Law+Office+of+Justin+D.+Leigh,+106+N+Grant+St,+Goldendale,+WA+98620&t=&z=17&ie=UTF8&iwloc=&output=embed"
+                width="100%"
+                height="220"
+                style={{ border: 0, filter: "invert(90%) hue-rotate(180deg) saturate(0.3) brightness(0.8)" }}
+                allowFullScreen=""
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+              />
+            </div>
+
+            {/* Office Photo */}
+            <div className="relative overflow-hidden border border-white/10">
+              <img
+                src="/office_front.webp"
+                alt="Law Office of Justin D. Leigh - Downtown Goldendale"
+                className="w-full h-[200px] object-cover"
+              />
+              <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black via-black/60 to-transparent p-4 pt-10">
+                <div className="font-serif text-xs text-white/70">
+                  Downtown Goldendale Office
+                </div>
+              </div>
             </div>
           </div>
         </div>
-
-        {/* Form */}
-        <form onSubmit={handleSubmit} className="space-y-8">
-          <div className="grid sm:grid-cols-2 gap-6">
-            <FormField label="Name" name="name" required value={form.name} onChange={handleChange} placeholder="Your full name" />
-            <FormField label="Email" name="email" type="email" required value={form.email} onChange={handleChange} placeholder="you@example.com" />
-          </div>
-          <div className="grid sm:grid-cols-2 gap-6">
-            <FormField label="Phone" name="phone" type="tel" value={form.phone} onChange={handleChange} placeholder="(optional)" />
-            <FormField label="Subject" name="subject" required value={form.subject} onChange={handleChange} placeholder="Brief description of your inquiry" />
-          </div>
-          <FormField label="How can I help you?" name="message" textarea required value={form.message} onChange={handleChange} placeholder="Please describe your legal matter..." />
-          <FormField label="Name of Opposing Party/Parties" name="opposing_party" textarea value={form.opposing_party} onChange={handleChange} placeholder="For conflict review purposes (optional)" />
-          <FormField label="How did you hear about me?" name="how_heard" value={form.how_heard} onChange={handleChange} placeholder="(optional)" />
-          <FormField label="Is your inquiry pertaining to real estate?" name="real_estate_inquiry" value={form.real_estate_inquiry} onChange={handleChange} placeholder="If yes, please include address or parcel number (optional)" />
-          <FormField label="Is your matter related to an existing court case?" name="court_case" value={form.court_case} onChange={handleChange} placeholder="If yes, please provide case details (optional)" />
-          <FormField label="Is there another attorney involved?" name="other_attorney" value={form.other_attorney} onChange={handleChange} placeholder="If yes, please provide their name (optional)" />
-
-          {status === "error" && (
-            <div className="bg-red-500/10 border border-red-500/20 px-5 py-4 text-red-400 text-sm">{errorMsg}</div>
-          )}
-
-          <p className="text-white/20 text-xs leading-relaxed">
-            Please do not submit any confidential or sensitive information
-            through this form. Submitting this form does not create an
-            attorney-client relationship.
-          </p>
-
-          <button type="submit" disabled={status === "sending"}
-            className="w-full sm:w-auto px-10 py-4 bg-gold text-navy text-sm font-bold tracking-wide hover:bg-gold-light transition-colors disabled:opacity-50 disabled:cursor-not-allowed">
-            {status === "sending" ? "Submitting..." : "Submit Inquiry"}
-          </button>
-        </form>
       </div>
     </section>
   );
