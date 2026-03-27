@@ -135,6 +135,18 @@ const areas = [
       "Contracts & Separation",
     ],
   },
+  {
+    title: "Family Law",
+    desc: "Guiding families through life's most challenging transitions with compassion and skilled advocacy.",
+    icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="w-6 h-6"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z" /></svg>,
+    bullets: [
+      "Divorce & Legal Separation",
+      "Child Custody & Parenting Plans",
+      "Child Support Modifications",
+      "Spousal Maintenance (Alimony)",
+      "Domestic Violence Protection Orders",
+    ],
+  },
 ];
 
 function ExpandIcon({ open }) {

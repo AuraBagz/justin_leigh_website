@@ -17,6 +17,7 @@ const logoPlaceholders = [
   "Civil Litigation",
   "Alcohol Beverage",
   "Landlord-Tenant",
+  "Family Law",
 ];
 
 export default function Hero() {
