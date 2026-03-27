@@ -187,7 +187,7 @@ export default function ContactPage() {
               </div>
               <div className="border border-white/10 p-5">
                 <div className="text-[11px] font-semibold tracking-[3px] uppercase text-white/25 mb-2">Phone</div>
-                <a href="tel:5094264416" className="font-serif text-sm text-gold hover:text-gold-light transition-colors">(509) 426-4416</a>
+                <a href="tel:5094264415" className="font-serif text-sm text-gold hover:text-gold-light transition-colors">(509) 426-4415</a>
               </div>
             </div>
 

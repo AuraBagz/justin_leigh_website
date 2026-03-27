@@ -127,10 +127,10 @@ export default function Navbar() {
             Integrate A.I. Into Your Practice
           </Link>
           <a
-            href="tel:5094264416"
+            href="tel:5094264415"
             className="text-[13px] text-gold hover:text-gold-light transition-colors whitespace-nowrap"
           >
-            (509) 426-4416
+            (509) 426-4415
           </a>
           <Link
             to="/contact"
@@ -179,10 +179,10 @@ export default function Navbar() {
               Integrate A.I. Into Your Practice
             </Link>
             <a
-              href="tel:5094264416"
+              href="tel:5094264415"
               className="text-sm text-gold hover:text-gold-light transition-colors py-1"
             >
-              (509) 426-4416
+              (509) 426-4415
             </a>
             <Link
               to="/contact"

@@ -90,7 +90,7 @@ export default function AIPage() {
           </p>
           <p className="text-white/40 text-sm">
             Call Justin directly at{" "}
-            <a href="tel:5094264416" className="text-gold hover:text-gold-light transition-colors">(509) 426-4416</a>{" "}
+            <a href="tel:5094264415" className="text-gold hover:text-gold-light transition-colors">(509) 426-4415</a>{" "}
             to discuss your firm's AI strategy.
           </p>
         </div>
@@ -121,7 +121,7 @@ export default function AIPage() {
             </h2>
             <p className="text-white/50 text-sm">
               Fill out the form below or call{" "}
-              <a href="tel:5094264416" className="text-gold hover:text-gold-light transition-colors">(509) 426-4416</a>
+              <a href="tel:5094264415" className="text-gold hover:text-gold-light transition-colors">(509) 426-4415</a>
             </p>
           </div>
 

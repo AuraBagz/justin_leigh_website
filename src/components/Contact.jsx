@@ -55,7 +55,7 @@ export default function Contact() {
           {[
             { label: "Office", value: "106 N. Grant St.\nGoldendale, WA 98620" },
             { label: "Mailing", value: "P.O. Box 855\nGoldendale, WA 98620" },
-            { label: "Phone", value: "(509) 426-4416" },
+            { label: "Phone", value: "(509) 426-4415" },
           ].map((item) => (
             <div key={item.label}>
               <div className="text-[11px] font-semibold tracking-[3px] uppercase text-white/25 mb-2">{item.label}</div>
