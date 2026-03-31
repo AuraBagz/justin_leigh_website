@@ -94,11 +94,11 @@ export default function Navbar() {
         <div className="hidden xl:flex items-center gap-1">
           {navLinks.map((link) => {
             const isActive =
-              location.pathname === "/contact"
-                ? link.href === "/contact"
-                : location.pathname === "/ai"
-                ? false
-                : link.section === activeSection;
+              link.href === location.pathname
+                ? true
+                : location.pathname === "/"
+                ? link.section === activeSection
+                : false;
             return (
               <Link
                 key={link.label}
