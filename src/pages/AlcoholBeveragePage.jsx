@@ -65,7 +65,7 @@ export default function AlcoholBeveragePage() {
           <p className="text-white/50 text-sm max-w-2xl mx-auto leading-relaxed">
             From navigating federal licensing to resolving distributor disputes, Justin brings
             firsthand ownership experience to every alcohol beverage matter. When your attorney
-            has walked the same path you're on, the advice hits different.
+            has walked the same path you're on, you get counsel you can actually trust.
           </p>
 
           {/* Brewery Headshot */}
