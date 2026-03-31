@@ -15,7 +15,7 @@ const logoPlaceholders = [
   "Criminal Defense",
   "Trademark",
   "Civil Litigation",
-  "Alcohol Beverage",
+  "Beverage Law",
   "Landlord-Tenant",
   "Family Law",
 ];

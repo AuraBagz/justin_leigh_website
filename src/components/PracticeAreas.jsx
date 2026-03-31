@@ -84,19 +84,6 @@ const areas = [
     ],
   },
   {
-    title: "Alcohol Beverage Law",
-    desc: "Industry-specific counsel from an attorney with firsthand brewery ownership experience.",
-    icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="w-6 h-6"><path d="M18 8h1a4 4 0 010 8h-1M2 8h16v9a4 4 0 01-4 4H6a4 4 0 01-4-4V8z" /><path d="M6 1v3M10 1v3M14 1v3" /></svg>,
-    bullets: [
-      "Licensing & Compliance",
-      "Distributor Contracts & Dispute Resolution",
-      "TTB COLA & Formula Approval",
-      "FDA Compliance",
-      "Intellectual Property",
-      "Enforcement Action Defense",
-    ],
-  },
-  {
     title: "Criminal Defense",
     desc: "Vigorous defense of your rights with personalized attention to every detail of your case.",
     icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="w-6 h-6"><circle cx="12" cy="12" r="10" /><path d="M12 6v6l4 2" /></svg>,
