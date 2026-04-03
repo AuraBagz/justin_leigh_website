@@ -127,26 +127,6 @@ export default function AlcoholBeveragePage() {
               </div>
             </div>
 
-            {/* Brewery Photos */}
-            <div className="mt-12">
-              <img
-                src="/brewery5.webp"
-                alt="Dwinell Country Ales - Aerial view of brewery and patio"
-                className="w-full h-[420px] object-cover object-center border border-white/10 mb-4"
-              />
-              <div className="grid grid-cols-2 gap-4">
-                <img
-                  src="/brewery2.webp"
-                  alt="Dwinell Country Ales - Tasting room interior"
-                  className="w-full h-[220px] object-cover border border-white/10"
-                />
-                <img
-                  src="/brewery1.jpg"
-                  alt="Dwinell Country Ales - Outdoor patio"
-                  className="w-full h-[220px] object-cover border border-white/10"
-                />
-              </div>
-            </div>
           </div>
         </div>
 
