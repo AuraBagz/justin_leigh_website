@@ -71,7 +71,7 @@ export default function AlcoholBeveragePage() {
           {/* Brewery Headshot */}
           <div className="mt-10 max-w-md mx-auto">
             <img
-              src="/brewery-headshot.jpg"
+              src="/brewery-headshot.png"
               alt="Justin D. Leigh at Dwinell Country Ales"
               className="w-full object-cover border border-white/10"
             />
