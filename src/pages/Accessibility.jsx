@@ -11,12 +11,12 @@ export default function Accessibility() {
         <div className="space-y-8 text-white/70 text-[15px] leading-relaxed">
           <section>
             <h2 className="text-white font-semibold text-lg mb-3">Our Commitment</h2>
-            <p>The Law Office of Justin D. Leigh is committed to ensuring digital accessibility for people with disabilities. We continually improve the user experience for everyone and apply relevant accessibility standards to ensure we provide equal access to all users.</p>
+            <p>The Law Office of Justin D. Leigh is committed to ensuring digital accessibility for people with disabilities, in accordance with the Americans with Disabilities Act (ADA) and applicable state and federal accessibility requirements. We continually improve the user experience for everyone and apply relevant accessibility standards to ensure we provide equal access to all users.</p>
           </section>
 
           <section>
             <h2 className="text-white font-semibold text-lg mb-3">Conformance Standard</h2>
-            <p>We aim to conform to the Web Content Accessibility Guidelines (WCAG) 2.1 Level AA. These guidelines explain how to make web content more accessible to people with a wide array of disabilities, including visual, auditory, physical, speech, cognitive, language, learning, and neurological disabilities.</p>
+            <p>This website strives to conform to the Web Content Accessibility Guidelines (WCAG) 2.1 Level AA. While we have implemented the accessibility features listed below, we recognize that some content may not yet fully conform and we are actively working to address any gaps. These guidelines explain how to make web content more accessible to people with a wide array of disabilities, including visual, auditory, physical, speech, cognitive, language, learning, and neurological disabilities.</p>
           </section>
 
           <section>
@@ -32,10 +32,25 @@ export default function Accessibility() {
               <li>Alternative text on all meaningful images</li>
               <li>Properly labeled form fields with associated labels</li>
               <li>Error messages announced to screen readers via ARIA live regions</li>
-              <li>Reduced motion support for users with vestibular disorders</li>
+              <li>Reduced motion support for users with vestibular disorders (respects prefers-reduced-motion)</li>
               <li>Responsive design for various screen sizes and devices</li>
               <li>Text content that can be selected and copied</li>
             </ul>
+          </section>
+
+          <section>
+            <h2 className="text-white font-semibold text-lg mb-3">Known Limitations</h2>
+            <p className="mb-3">The following areas may have limited accessibility:</p>
+            <ul className="list-disc list-inside space-y-2 ml-4">
+              <li><span className="text-white/90 font-medium">PDF documents:</span> PDF documents provided through our website or client portal may not be fully accessible to screen readers. We will provide alternative formats upon request.</li>
+              <li><span className="text-white/90 font-medium">Third-party content:</span> Content embedded on our site (such as the Google Maps widget on our contact page) is subject to the accessibility of those third-party services, which is outside our direct control.</li>
+              <li><span className="text-white/90 font-medium">Client portal uploads:</span> Documents uploaded to the client portal are provided in the format received and may not conform to WCAG standards.</li>
+            </ul>
+          </section>
+
+          <section>
+            <h2 className="text-white font-semibold text-lg mb-3">Evaluation Methodology</h2>
+            <p>This website's accessibility is evaluated through a combination of automated testing tools, manual testing with keyboard navigation and screen readers, and ongoing monitoring during development. We review our accessibility practices regularly and address identified issues as promptly as possible.</p>
           </section>
 
           <section>
