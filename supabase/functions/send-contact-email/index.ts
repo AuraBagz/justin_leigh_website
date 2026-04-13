@@ -89,8 +89,8 @@ Deno.serve(async (req) => {
       },
       body: JSON.stringify({
         from: isAI
-          ? "Stalefish A.I. <onboarding@resend.dev>"
-          : "Law Office Contact <onboarding@resend.dev>",
+          ? "Stalefish A.I. <contactrequest@justindleigh.com>"
+          : "Law Office Contact <contactrequest@justindleigh.com>",
         to: ["justindleigh@gmail.com"],
         subject: emailSubject,
         html,

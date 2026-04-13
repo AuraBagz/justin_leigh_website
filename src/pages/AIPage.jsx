@@ -157,11 +157,14 @@ export default function AIPage() {
                 <textarea name="message" required value={form.message} onChange={handleChange} rows={4} placeholder="What AI challenges or goals does your firm have?"
                   className="w-full bg-white/[0.04] border border-white/10 px-4 py-3.5 text-white text-sm placeholder:text-white/20 focus:outline-none focus:border-gold/50 transition-colors resize-y min-h-[100px]" />
               </div>
+              <div className="bg-white/[0.03] border border-white/10 p-4 text-[11px] text-white/40 leading-relaxed">
+                <p>By submitting this form, you acknowledge that this inquiry does not create an attorney-client relationship. Please do not include confidential or sensitive information until a formal engagement has been established. Information submitted through this form is not protected by attorney-client privilege. See our <a href="/terms" className="text-gold/60 hover:text-gold underline">Terms &amp; Disclaimer</a> and <a href="/privacy" className="text-gold/60 hover:text-gold underline">Privacy Policy</a>.</p>
+              </div>
               <button type="submit" disabled={status === "sending"}
                 className="w-full sm:w-auto px-10 py-4 bg-gold text-navy text-sm font-bold tracking-wide hover:bg-gold-light transition-colors disabled:opacity-50">
                 {status === "sending" ? "Submitting..." : "Request Consultation"}
               </button>
-              {status === "error" && <p className="text-red-400 text-sm">Something went wrong. Please try again or call directly.</p>}
+              {status === "error" && <p role="alert" aria-live="assertive" className="text-red-400 text-sm">Something went wrong. Please try again or call directly.</p>}
             </form>
           )}
         </div>

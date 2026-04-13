@@ -9,6 +9,9 @@ import Footer from "./components/Footer";
 import ContactPage from "./pages/ContactPage";
 import AIPage from "./pages/AIPage";
 import AlcoholBeveragePage from "./pages/AlcoholBeveragePage";
+import PrivacyPolicy from "./pages/PrivacyPolicy";
+import Terms from "./pages/Terms";
+import Accessibility from "./pages/Accessibility";
 
 function HomePage() {
   return (
@@ -33,6 +36,9 @@ export default function App() {
         <Route path="/contact" element={<ContactPage />} />
         <Route path="/ai" element={<AIPage />} />
         <Route path="/alcohol-beverage-law" element={<AlcoholBeveragePage />} />
+        <Route path="/privacy" element={<PrivacyPolicy />} />
+        <Route path="/terms" element={<Terms />} />
+        <Route path="/accessibility" element={<Accessibility />} />
       </Routes>
       </main>
       <Footer />
