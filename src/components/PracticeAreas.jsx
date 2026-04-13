@@ -179,9 +179,12 @@ export default function PracticeAreas() {
           {areas.map((area, i) => {
             const isOpen = expanded === i;
             return (
-              <div
+              <button
                 key={area.title}
-                className={`group bg-black p-8 transition-all duration-500 relative cursor-pointer ${
+                type="button"
+                aria-expanded={isOpen}
+                aria-controls={`practice-area-${i}`}
+                className={`group bg-black p-8 transition-all duration-500 relative cursor-pointer text-left w-full ${
                   isOpen ? "bg-white/[0.03]" : "hover:bg-white/[0.03]"
                 } ${inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-5"}`}
                 style={{
@@ -207,6 +210,9 @@ export default function PracticeAreas() {
 
                 {/* Expandable bullet points */}
                 <div
+                  id={`practice-area-${i}`}
+                  role="region"
+                  aria-hidden={!isOpen}
                   className="overflow-hidden transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)]"
                   style={{
                     maxHeight: isOpen ? `${area.bullets.length * 36 + 24}px` : "0px",
@@ -216,13 +222,13 @@ export default function PracticeAreas() {
                   <ul className="mt-5 pt-4 border-t border-white/5 space-y-2">
                     {area.bullets.map((bullet) => (
                       <li key={bullet} className="flex items-start gap-2.5">
-                        <div className="w-1.5 h-1.5 rounded-full bg-gold mt-1.5 flex-shrink-0" />
+                        <div className="w-1.5 h-1.5 rounded-full bg-gold mt-1.5 flex-shrink-0" aria-hidden="true" />
                         <span className="text-sm text-white/60">{bullet}</span>
                       </li>
                     ))}
                   </ul>
                 </div>
-              </div>
+              </button>
             );
           })}
         </div>

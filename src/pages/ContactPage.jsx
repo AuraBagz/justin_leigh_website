@@ -135,7 +135,7 @@ export default function ContactPage() {
               <FormField label="Is there another attorney involved?" name="other_attorney" value={form.other_attorney} onChange={handleChange} placeholder="If yes, please provide their name (optional)" />
 
               {status === "error" && (
-                <div className="bg-red-500/10 border border-red-500/20 px-5 py-4 text-red-400 text-sm">{errorMsg}</div>
+                <div role="alert" aria-live="assertive" className="bg-red-500/10 border border-red-500/20 px-5 py-4 text-red-400 text-sm">{errorMsg}</div>
               )}
 
               <p className="text-white/20 text-xs leading-relaxed">

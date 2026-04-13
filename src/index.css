@@ -21,10 +21,10 @@
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     margin: 0;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
+    -webkit-user-select: auto;
+    -moz-user-select: auto;
+    -ms-user-select: auto;
+    user-select: auto;
   }
   input, textarea, [contenteditable] {
     -webkit-user-select: text;
@@ -184,4 +184,48 @@ html.light-mode .bg-gold\/20 {
 }
 html.light-mode .bg-gold\/15 {
   background: rgba(201,168,76,0.15);
+}
+
+/* ============================================================
+   ADA / WCAG 2.1 AA Accessibility
+   ============================================================ */
+
+/* Focus indicators — visible for keyboard navigation */
+*:focus-visible {
+  outline: 2px solid #c9a84c;
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* Reduced motion — respect user preference for vestibular disorders */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  video {
+    display: none !important;
+  }
+}
+
+/* Skip navigation link — keyboard users can skip to main content */
+.skip-link {
+  position: absolute;
+  top: -100px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #c9a84c;
+  color: #0a1628;
+  padding: 12px 24px;
+  font-weight: 700;
+  font-size: 14px;
+  z-index: 9999;
+  border-radius: 0 0 8px 8px;
+  text-decoration: none;
+  transition: top 0.15s ease;
+}
+.skip-link:focus {
+  top: 0;
 }

@@ -25,13 +25,16 @@ function HomePage() {
 export default function App() {
   return (
     <>
+      <a href="#main-content" className="skip-link">Skip to main content</a>
       <Navbar />
+      <main id="main-content">
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/contact" element={<ContactPage />} />
         <Route path="/ai" element={<AIPage />} />
         <Route path="/alcohol-beverage-law" element={<AlcoholBeveragePage />} />
       </Routes>
+      </main>
       <Footer />
     </>
   );
