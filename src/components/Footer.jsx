@@ -19,7 +19,7 @@ export default function Footer() {
               <p>Justin D. Leigh, Attorney at Law</p>
               <p>Goldendale, Washington</p>
               <p>WSBA #55307 | Licensed in WA &amp; OR</p>
-              <p className="mt-2"><a href="tel:5097738469" className="text-gold/60 hover:text-gold transition-colors">(509) 773-8469</a></p>
+              <p className="mt-2"><a href="tel:5094264415" className="text-gold/60 hover:text-gold transition-colors">(509) 426-4415</a></p>
             </div>
           </div>
 

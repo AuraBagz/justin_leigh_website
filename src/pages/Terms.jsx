@@ -99,7 +99,7 @@ export default function Terms() {
               <p className="text-white font-medium">Justin D. Leigh, Attorney at Law</p>
               <p>Law Office of Justin D. Leigh</p>
               <p>Goldendale, Washington</p>
-              <p className="mt-2">Phone: <a href="tel:5097738469" className="text-gold hover:text-gold-light transition-colors">(509) 773-8469</a></p>
+              <p className="mt-2">Phone: <a href="tel:5094264415" className="text-gold hover:text-gold-light transition-colors">(509) 426-4415</a></p>
               <p>Email: <a href="mailto:justindleigh@gmail.com" className="text-gold hover:text-gold-light transition-colors">justindleigh@gmail.com</a></p>
               <p className="mt-2">WSBA #55307</p>
             </div>

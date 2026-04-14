@@ -102,7 +102,7 @@ export default function PrivacyPolicy() {
             <p className="mb-3"><span className="text-white/90 font-medium">Purpose of Collection:</span> We collect consumer health data solely to evaluate and provide legal services that you have requested or inquired about.</p>
             <p className="mb-3"><span className="text-white/90 font-medium">Third Parties:</span> Consumer health data may be stored by Supabase (our database provider) as part of your case records. We do not sell consumer health data to any third party.</p>
             <p className="mb-3"><span className="text-white/90 font-medium">Your Rights:</span> You have the right to: (1) confirm whether we are collecting or sharing your consumer health data; (2) access your consumer health data; (3) withdraw consent for future collection of health data not necessary to provide legal services; and (4) request deletion of your consumer health data, subject to our legal and ethical retention obligations.</p>
-            <p><span className="text-white/90 font-medium">How to Exercise Your Rights:</span> Contact Justin D. Leigh directly at (509) 773-8469 or justindleigh@gmail.com to exercise any rights under the My Health My Data Act. We will respond within 45 days.</p>
+            <p><span className="text-white/90 font-medium">How to Exercise Your Rights:</span> Contact Justin D. Leigh directly at (509) 426-4415 or justindleigh@gmail.com to exercise any rights under the My Health My Data Act. We will respond within 45 days.</p>
           </section>
 
           <section>
@@ -127,7 +127,7 @@ export default function PrivacyPolicy() {
               <p className="text-white font-medium">Justin D. Leigh, Attorney at Law</p>
               <p>Law Office of Justin D. Leigh</p>
               <p>Goldendale, Washington</p>
-              <p className="mt-2">Phone: <a href="tel:5097738469" className="text-gold hover:text-gold-light transition-colors">(509) 773-8469</a></p>
+              <p className="mt-2">Phone: <a href="tel:5094264415" className="text-gold hover:text-gold-light transition-colors">(509) 426-4415</a></p>
               <p>Email: <a href="mailto:justindleigh@gmail.com" className="text-gold hover:text-gold-light transition-colors">justindleigh@gmail.com</a></p>
             </div>
           </section>
