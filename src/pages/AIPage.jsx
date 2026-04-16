@@ -37,6 +37,8 @@ const services = [
 export default function AIPage() {
   const [form, setForm] = useState({ name: "", email: "", phone: "", message: "" });
   const [status, setStatus] = useState("idle");
+  const [honeypot, setHoneypot] = useState("");
+  const [formLoadTime] = useState(Date.now());
 
   function handleChange(e) {
     setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }));
@@ -44,6 +46,11 @@ export default function AIPage() {
 
   async function handleSubmit(e) {
     e.preventDefault();
+
+    // Bot detection
+    if (honeypot) { setStatus("success"); return; }
+    if (Date.now() - formLoadTime < 3000) { setStatus("success"); return; }
+
     setStatus("sending");
     try {
       await supabase.from("ai_inquiries").insert([{
@@ -135,6 +142,9 @@ export default function AIPage() {
             </div>
           ) : (
             <form onSubmit={handleSubmit} className="space-y-6">
+              <div className="absolute opacity-0 h-0 w-0 overflow-hidden" aria-hidden="true" tabIndex={-1}>
+                <input type="text" name="website_url" value={honeypot} onChange={(e) => setHoneypot(e.target.value)} tabIndex={-1} autoComplete="off" />
+              </div>
               <div className="grid sm:grid-cols-2 gap-6">
                 <div>
                   <label className="block text-[13px] font-medium text-white/50 mb-2">Name <span className="text-gold">*</span></label>

@@ -20,6 +20,8 @@ export default function ContactPage() {
   const [status, setStatus] = useState("idle");
   const [errorMsg, setErrorMsg] = useState("");
   const [copied, setCopied] = useState(false);
+  const [honeypot, setHoneypot] = useState("");
+  const [formLoadTime] = useState(Date.now());
 
   function handleChange(e) {
     setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }));
@@ -27,6 +29,11 @@ export default function ContactPage() {
 
   async function handleSubmit(e) {
     e.preventDefault();
+
+    // Bot detection: honeypot field filled or submitted too fast
+    if (honeypot) { setStatus("success"); return; }
+    if (Date.now() - formLoadTime < 3000) { setStatus("success"); return; }
+
     setStatus("sending");
     setErrorMsg("");
 
@@ -118,6 +125,10 @@ export default function ContactPage() {
               Consultation Request
             </div>
             <form onSubmit={handleSubmit} className="space-y-6">
+              {/* Honeypot — hidden from humans, bots auto-fill it */}
+              <div className="absolute opacity-0 h-0 w-0 overflow-hidden" aria-hidden="true" tabIndex={-1}>
+                <input type="text" name="website_url" value={honeypot} onChange={(e) => setHoneypot(e.target.value)} tabIndex={-1} autoComplete="off" />
+              </div>
               <div className="grid sm:grid-cols-2 gap-5">
                 <FormField label="Name" name="name" required value={form.name} onChange={handleChange} placeholder="Your full name" />
                 <FormField label="Email" name="email" type="email" required value={form.email} onChange={handleChange} placeholder="you@example.com" />
